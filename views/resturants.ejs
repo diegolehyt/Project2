@@ -1,0 +1,61 @@
+<!-- change to handle bars  -->
+
+<%- include("partials/header") %>
+
+
+<header class="jumbotron">
+    <div class="container">
+        <h1>Welcome to Yelp</h1>
+        <p>View our Resturants</p>
+
+        <p>
+            <a class="btn btn-primary btn-lg" href="/resturants/new">Add New Resturants</a>
+        </p>
+    </div>
+</header>
+
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3> Popular resturants</h3>
+        </div>
+    </div>
+
+    <div class="row">
+
+
+    
+        <!-- change to handle bars  -->
+
+        <% resturants.forEach(function(resturants){ %>
+        <div class=" col-sm-12">
+            
+            <div class="img-thumbnail rounded float-left">
+            <!-- change to handle bars  -->
+
+                <img src="<%= resturants.image %>">
+                <div class="caption">
+
+                    <!-- change to handle bars  -->
+                    <h4> <%= resturants.name %>" </h4>
+                </div>
+            </div>
+            
+            
+        </div>
+    <!-- change to handle bars  -->
+
+        <% }) %>
+
+    </div>
+
+
+</div>
+
+<!-- change to handle bars  -->
+
+<%- include("partials/footer") %>

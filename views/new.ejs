@@ -1,0 +1,15 @@
+<%- include("partials/header") %>
+
+
+<h1> Create a new resturant</h1>
+
+<form action="/resturants" method="POST">
+    <input type="text" name="name" placeholder="name">
+    <input type="text" name="image" placeholder="image url">
+    <button>Submit</button>
+</form>
+
+<a href="/resturants/new">Back to resturants</a>
+
+
+<%- include("partials/footer") %> 
