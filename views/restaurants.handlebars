@@ -4,7 +4,7 @@
       <p>View our Resturants</p>
 
       <p>
-        <a class="btn btn-primary btn-lg" href="/resturants/new">Add New Resturants</a>
+        <a class="btn btn-primary btn-lg" href="/restaurants/new">Add New Resturants</a>
       </p>
     </div>
 </header>
@@ -20,9 +20,9 @@
         {{#each restaurants}}
         <div class=" col-sm-12">            
           <div class="img-thumbnail rounded float-left">
-            <img src={{ resturants.image }}>
+            {{!-- <img src={{ resturants.image }}> --}}
             <div class="caption">
-              <h4> {{ resturants.name }} </h4>
+              <h4> {{ name }} </h4>
             </div>
           </div>    
         </div>
