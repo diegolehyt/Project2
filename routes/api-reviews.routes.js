@@ -1,5 +1,5 @@
 // *****************************************************************************
-// api-posts.routes.js
+// api-reviews.routes.js
 // This module provides a set of RESTful API route definitions for
 // displaying Post data from and saving Post data to the database.
 // *****************************************************************************

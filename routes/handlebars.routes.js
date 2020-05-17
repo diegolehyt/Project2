@@ -17,23 +17,39 @@ const { Review, Restaurant } = require('../models')
 // =============================================================
 
 // The route for creating blob reviews
-router.get('/landing', function (req, res) {
+router.get('/index', function (req, res) {
   
-  res.render('landing')
+  res.render('index')
 })
 
 // The route for managing restaurants
 router.get('/restaurants', async function (req, res) {
   try {
-    const restaurantsArray = await Restaurant.findAll()
-    console.log(restaurantsArray)
-    res.status(200).render('restaurants', {restaurants: restaurantsArray})
+    const restaurants = await Restaurant.findAll({
+      raw: true
+    });
+    console.log(restaurants)
+    
+    res.status(200).render('restaurants', { restaurants: restaurants })
   }
   catch (err) {
     res.status(500).json({ errors: [err] }) // change to better error display
   }
-  
 })
+
+router.post('/restaurants', async function (req, res) {
+  try {
+    
+    let { name } = req.body
+    await Restaurant.create({ name })
+    res.status(200).redirect('/restaurants')
+  }
+  catch (err) {
+    res.status(500).json({ errors: [err] }) // change to better error display
+  }
+})
+
+
 
 // The route for viewing the blog reviews
 router.get('/restaurants/new', function (req, res) {
@@ -41,6 +57,6 @@ router.get('/restaurants/new', function (req, res) {
 })
 
 // The index route redirects to /landing route
-router.get('/', (req, res) => res.redirect('/landing'))
+router.get('/', (req, res) => res.redirect('/index'))
 
 module.exports = router

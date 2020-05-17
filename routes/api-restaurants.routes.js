@@ -1,5 +1,5 @@
 // *****************************************************************************
-// api-authors.routes.js
+// api-restaurants.routes.js
 // This module provides a set of RESTful API route definitions for
 // displaying Author data from and saving Author data to the database.
 // *****************************************************************************
@@ -37,6 +37,8 @@ router.get('/:id', function (req, res) {
 
 // Create a new Restaurant with the data recieved in req.body
 router.post('/', function (req, res) {
+  // console.log(req.body) // testing
+
   Restaurant.create(req.body)
     .then(restaurant => res.status(201).json({ data: restaurant }))
     .catch(err => {
