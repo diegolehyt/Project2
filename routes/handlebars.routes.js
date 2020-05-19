@@ -40,8 +40,10 @@ router.get('/restaurants', async function (req, res) {
 router.post('/restaurants', async function (req, res) {
   try {
     
-    let { name } = req.body
-    await Restaurant.create({ name })
+    let { name, image } = req.body
+
+    // save it into the db
+    await Restaurant.create({ name, image })
     res.status(200).redirect('/restaurants')
   }
   catch (err) {
