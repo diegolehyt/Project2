@@ -16,7 +16,6 @@ module.exports = function (sequelize, DataTypes) {
   })
 
   Review.associate = function (models) {
-
     Review.belongsTo(models.Restaurant, {
       foreignKey: { allowNull: false }
     })

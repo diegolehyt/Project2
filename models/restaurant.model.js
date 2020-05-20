@@ -14,8 +14,8 @@ module.exports = function (sequelize, DataTypes) {
   })
 
   Restaurant.associate = function (models) {
-    Restaurant.hasMany(models.Review, { 
-      onDelete: 'cascade' 
+    Restaurant.hasMany(models.Review, {
+      onDelete: 'cascade'
     })
   }
 

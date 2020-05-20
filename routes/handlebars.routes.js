@@ -11,14 +11,13 @@
 const router = require('express').Router()
 
 // Import the Post and Author modes using object destructuring assignment
-const { Review, Restaurant } = require('../models')
+const { Restaurant } = require('../models') // ======remember add review page route Review
 
 // Routes
 // =============================================================
 
 // The route for creating blob reviews
 router.get('/index', function (req, res) {
-  
   res.render('index')
 })
 
@@ -27,31 +26,26 @@ router.get('/restaurants', async function (req, res) {
   try {
     const restaurants = await Restaurant.findAll({
       raw: true
-    });
+    })
     console.log(restaurants)
-    
+
     res.status(200).render('restaurants', { restaurants: restaurants })
-  }
-  catch (err) {
+  } catch (err) {
     res.status(500).json({ errors: [err] }) // change to better error display
   }
 })
 
 router.post('/restaurants', async function (req, res) {
   try {
-    
-    let { name, image } = req.body
+    const { name, image } = req.body
 
     // save it into the db
     await Restaurant.create({ name, image })
     res.status(200).redirect('/restaurants')
-  }
-  catch (err) {
+  } catch (err) {
     res.status(500).json({ errors: [err] }) // change to better error display
   }
 })
-
-
 
 // The route for viewing the blog reviews
 router.get('/restaurants/new', function (req, res) {

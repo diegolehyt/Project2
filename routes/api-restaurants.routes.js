@@ -15,22 +15,20 @@ const router = require('express').Router()
 
 // Find all Restaurants and return them to the user with res.json
 router.get('/', function (req, res) {
-
   Restaurant.findAll({ include: [Review] })
     .then(restaurantsArray => res.status(200).json({ data: restaurantsArray }))
     .catch(err => {
-      console.log(`GET /posts failed \n`, err)
+      console.log('GET /posts failed \n', err)
       res.status(500).json({ errors: [err] })
     })
 })
 
 // Find one Restaurant with the id = req.params.id and return it with res.json
 router.get('/:id', function (req, res) {
-
   Restaurant.findByPk(req.params.id, { include: [Review] })
     .then(restaurant => res.status(200).json({ data: restaurant }))
     .catch(err => {
-      console.log(`GET /posts failed \n`, err)
+      console.log('GET /posts failed \n', err)
       res.status(500).json({ errors: [err] })
     })
 })
@@ -42,7 +40,7 @@ router.post('/', function (req, res) {
   Restaurant.create(req.body)
     .then(restaurant => res.status(201).json({ data: restaurant }))
     .catch(err => {
-      console.log(`GET /posts failed \n`, err)
+      console.log('GET /posts failed \n', err)
       res.status(500).json({ errors: [err] })
     })
 })
@@ -54,7 +52,7 @@ router.delete('/:id', async function (req, res) {
     await restaurant.destroy()
     res.status(200).json({ data: restaurant })
   } catch (err) {
-    console.log(`GET /posts failed \n`, err)
+    console.log('GET /posts failed \n', err)
     res.status(500).json({ errors: [err] })
   }
 })
