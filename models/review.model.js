@@ -3,12 +3,12 @@
 // created by the sequelize-cli
 module.exports = function (sequelize, DataTypes) {
   const Review = sequelize.define('Review', {
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: { len: [1] }
     },
-    message: {
+    comment: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: { len: [1] }
@@ -18,6 +18,12 @@ module.exports = function (sequelize, DataTypes) {
   Review.associate = function (models) {
     Review.belongsTo(models.Restaurant, {
       foreignKey: { allowNull: false }
+    })
+  }
+
+  Review.associate = function (models) {
+    Review.belongsTo(models.User, {
+      onDelete: 'cascade'
     })
   }
 

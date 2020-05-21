@@ -8,7 +8,7 @@
       </p>
     </div>
 </header>
-
+{{#each restaurants}}
 <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -17,15 +17,15 @@
     </div>
 
     <div class="row">
-        {{#each restaurants}}
+        
         <div class=" col-sm-12">            
           <div class="img-thumbnail rounded float-left">
-            <img src={{ image }}>
+            <img src={{ image }} style="width: 35%; height: 35%">
             <div class="caption">
               <h4  style="color: black;"> {{ name }} </h4>
             </div>
             <p>
-              <a class="btn btn-primary btn-lg" href="/reviews">Add your review</a>
+              <a id={{ id }} class="btn btn-primary btn-lg" data-id={{ id }} onclick="{{ name }}()" href="/restaurants/reviews">Add your review</a>
             </p>
           </div> 
           {{!-- Rating --}}
@@ -49,9 +49,19 @@
           </div>
           {{!-- Rating ends --}}
         </div>
-        {{/each}}
+        
     </div>
 </div>
+<script>
+  function {{ name }}() {
+    let restID = document.getElementById({{ id }}).getAttribute('data-id')
+    // localstorage
+    localStorage.setItem("vOneLocalStorage", restID);
+  }  
+</script>
+
+{{/each}}
+<script src="/assets/js/client.js"></script>
 
 
 

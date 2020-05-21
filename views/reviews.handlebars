@@ -1,57 +1,51 @@
-<header class="jumbotron" style="background-color: rgba(0, 0, 0, 0.459);">
-    <div class="container">
-      <h1>Welcome to Revisa</h1>
-      <p>View our Resturants</p>
-
-      <p>
-        <a class="btn btn-primary btn-lg" href="/restaurants/new">Add New Resturants</a>
-      </p>
-    </div>
-</header>
-
 <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h3> Popular resturants</h3>
+        <h3> Reviews</h3>
       </div>
     </div>
 
     <div class="row">
-        {{#each restaurants}}
+ 
+        <div id="restaurantN"></div>
+        <form id="create-form">
+          <div class="form-group">
+            <input type="text" id="userName" name="username" />
+            <input type="text" id="comment" name="comment" placeholder="write your comment here">
+            <button type="submit">Submit</button>
+          </div>
+
+
+        </form>
+    </div>
+</div>
+
+<script src="/assets/js/client.js"></script>
+<script src="/assets/js/reviews.js"></script>
+
+       {{!--{{#each restaurant}}
+        {{log this}}
         <div class=" col-sm-12">            
           <div class="img-thumbnail rounded float-left">
-            <img src={{ image }}>
+            <img src={{ image }} style="width: 40%; height: 40%">
             <div class="caption">
               <h4  style="color: black;"> {{ name }} </h4>
             </div>
-            <p>
-              <a class="btn btn-primary btn-lg" href="/reviews">Add your review</a>
-            </p>
-          </div> 
-          {{!-- Rating --}}
-          <div class="rating">
-
-            <input type="radio" name="rating" id="r1">
-            <label for="r1"></label>
-
-            <input type="radio" name="rating" id="r2">
-            <label for="r2"></label>
-
-            <input type="radio" name="rating" id="r3">
-            <label for="r3"></label>
-
-            <input type="radio" name="rating" id="r4">
-            <label for="r4"></label>
-
-            <input type="radio" name="rating" id="r5">
-            <label for="r5"></label>
-
           </div>
-          {{!-- Rating ends --}}
+        
+          <div class=" col-sm-12">
+            
+            <span>{{Reviews}}</span>
+            <p>{{this}}</p>
+          </div>
         </div>
-        {{/each}}
-    </div>
-</div>
+        {{/each}} --}}
+
+        {{!-- <form action="/restaurants/reviews" method="POST">
+          <input type="text" name="username" />
+          <input type="text" name="comment" placeholder="write your comment here">
+          <button type="submit">Submit</button>
+        </form>  --}}
 
 
 
