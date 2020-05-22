@@ -4,13 +4,26 @@
 
       <h1> Create a new restaurant</h1>
 
+      
+      <form id="create-form1">
+
+        <div class="form-group">
+          <label for="restaurantName">Restaurant Name:</label>
+          <input type="text" id="restaurantName" name="name" placeholder="Restaurant name">
+          <label for="restaurantImg">Restaurant Logo:</label>
+          <input type="text" id="restaurantImg" name="image" placeholder="Image url">
+        </div>
+
+        <button type="submit">Add Restaurant</button>
+      </form>
 
 
-      <form action="/restaurants" method="POST">
+
+      {{!-- <form action="/restaurants" method="POST">
         <input type="text" name="name" />
         <input type="text" name="image" placeholder="image url">
         <button type="submit">Submit</button>
-      </form>
+      </form> --}}
 
       <a href="/restaurants">Back to restaurants</a>
 
@@ -18,15 +31,7 @@
   </div>
 </div>
 
+<script src="/assets/js/client.js"></script>
 
 
 
-{{!--       <form id="create-form">
-
-        <div class="form-group">
-          <label for="restaurantName">Restaurant Name:</label>
-          <input type="text" id="restaurantName" name="name">
-        </div>
-
-        <button type="submit">Add Restaurant</button>
-      </form> --}}

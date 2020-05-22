@@ -1,32 +1,34 @@
 // ==========================================\ Client JS logic /============================================== \\
 
+document.getElementById('create-form1').addEventListener('submit', event => {
+  const newRestaurant = {
+    name: document.getElementById('restaurantName').value.trim(),
+    image: document.getElementById('restaurantImg').value.trim()
+  }
+
+  // eslint-disable-next-line no-undef
+  fetch('/restaurants', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newRestaurant)
+  }).then(response => {
+    console.log(response)
+    // if (response.ok) location.reload()
+  })
+})
+
 // document.getElementById('create-form').addEventListener('submit', event => {
-//   const newRestaurant = {
-//     name: document.getElementById('restaurantName').value.trim(),
-//     image: document.getElementById('restaurantName').value.trim()
+//   const newReview = {
+//     username: document.getElementById('userName').value.trim(),
+//     comment: document.getElementById('comment').value.trim()
 //   }
 
-//   fetch('/api/restaurants/', {
+//   fetch('/restaurants/reviews', {
 //     method: 'POST',
 //     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(newRestaurant)
+//     body: JSON.stringify(newReview)
 //   }).then(response => {
 //     console.log(response)
-//     if (response.ok) location.reload()
-//   })
-// })
-
-// document.getElementById('create-form').addEventListener('submit', event => {
-//   const newRestaurant = {
-//     name: document.getElementById('restaurantName').value.trim()
-//   }
-
-//   fetch('/restaurants', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(newRestaurant)
-//   }).then(response => {
-//     console.log(response)
-//     if (response.ok) location.reload()
+//     // if (response.ok) location.reload()
 //   })
 // })
