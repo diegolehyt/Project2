@@ -12,6 +12,18 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: { len: [1] }
+    },
+    rating: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    money: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    bussy: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   })
 
@@ -21,11 +33,11 @@ module.exports = function (sequelize, DataTypes) {
     })
   }
 
-  Review.associate = function (models) {
-    Review.belongsTo(models.User, {
-      onDelete: 'cascade'
-    })
-  }
+  // Review.associate = function (models) {
+  //   Review.belongsTo(models.User, {
+  //     onDelete: 'cascade'
+  //   })
+  // }
 
   return Review
 }

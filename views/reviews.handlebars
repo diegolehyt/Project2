@@ -7,9 +7,81 @@
 
     <div class="row">
  
-        <div id="restaurantN"></div>
-        <form id="create-form">
-          <div class="form-group">
+        <h4 id="restaurantN" class="col-12"></h4>
+        <div class="img-thumbnail rounded float-right" style="height: 15%; width: 15%">
+          <img id='restaurantImg' style="width: 100%; height: 100%">
+        </div>
+        
+        <div id="reviewsContainer" class="col-12">
+
+        </div>
+
+        <form id="create-form" class="row">
+          {{!-- Rating --}}
+          <div class="rating form-group col-5">
+
+            <input type="radio" name="rating" value="1" id="r1">
+            <label for="r1"></label>
+
+            <input type="radio" name="rating" value="2" id="r2">
+            <label for="r2"></label>
+
+            <input type="radio" name="rating" value="3" id="r3">
+            <label for="r3"></label>
+
+            <input type="radio" name="rating" value="4" id="r4">
+            <label for="r4"></label>
+
+            <input type="radio" name="rating" value="5" id="r5">
+            <label for="r5"></label>
+
+          </div>
+          <div class="col-7"></div>
+          {{!-- Rating ends --}}
+          {{!-- Rating money--}}
+          <div class="rating2 form-group col-5">
+
+            <input type="radio" name="rating2" value="1" id="r11">
+            <label for="r11"></label>
+
+            <input type="radio" name="rating2" value="2" id="r22">
+            <label for="r22"></label>
+
+            <input type="radio" name="rating2" value="3" id="r33">
+            <label for="r33"></label>
+
+            <input type="radio" name="rating2" value="4" id="r44">
+            <label for="r44"></label>
+
+            <input type="radio" name="rating2" value="5" id="r55">
+            <label for="r55"></label>
+
+          </div>
+          <div class="col-7"></div>
+          {{!-- Rating money ends --}}
+          {{!-- Rating Food--}}
+          <div class="rating3 form-group col-5">
+
+            <input type="radio" name="rating3" value="1" id="r111">
+            <label for="r111"></label>
+
+            <input type="radio" name="rating3" value="2" id="r222">
+            <label for="r222"></label>
+
+            <input type="radio" name="rating3" value="3" id="r333">
+            <label for="r333"></label>
+
+            <input type="radio" name="rating3" value="4" id="r444">
+            <label for="r444"></label>
+
+            <input type="radio" name="rating3" value="5" id="r555">
+            <label for="r555"></label>
+
+          </div>
+          <div class="col-7"></div>
+          {{!-- Rating Food ends --}}
+          
+          <div class="form-group col-12">
             <input type="text" id="userName" name="username" />
             <input type="text" id="comment" name="comment" placeholder="write your comment here">
             <button type="submit">Submit</button>

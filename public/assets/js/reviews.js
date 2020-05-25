@@ -8,10 +8,31 @@ const apiRestURL = `/api/restaurants/${restaurantId}`
 
 // eslint-disable-next-line no-undef
 fetch(apiRestURL).then(function (response) { return response.json() }).then(function (data) {
-  // document.getElementsById('logo').setAttribute('src', `${data.image}`)
+
   const restaurantN = document.getElementById('restaurantN')
+  let reviewsContainer = document.getElementById('reviewsContainer')
+  // let restaurantImg = document.getElementById('restaurantImg')
+
   restaurantN.innerHTML = (data.data.name)
-  console.log(data.data.name)
+  document.getElementById('restaurantImg').setAttribute('src', `${data.data.image}`)
+
+  console.log(data.data.Reviews)
+
+  let allReviews = data.data.Reviews
+  allReviews.forEach(review => {
+
+    let reviewBlock = document.createElement('div')
+    let nombre = document.createElement('div')
+    let comentario = document.createElement('div')
+
+    nombre.innerHTML = review.username
+    comentario.innerHTML = review.comment
+
+    reviewBlock.appendChild(nombre)
+    reviewBlock.appendChild(comentario)
+
+    reviewsContainer.appendChild(reviewBlock)
+  })
 })
 
 // localStorage.clear()
@@ -22,7 +43,10 @@ document.getElementById('create-form').addEventListener('submit', event => {
   const newReview = {
     username: document.getElementById('userName').value.trim(),
     comment: document.getElementById('comment').value.trim(),
-    RestaurantId: restaurantId
+    RestaurantId: restaurantId,
+    rating: document.querySelector('[name=rating]:checked').value.trim(),
+    money: document.querySelector('[name=rating2]:checked').value.trim(),
+    bussy: document.querySelector('[name=rating3]:checked').value.trim()
   }
 
   // eslint-disable-next-line no-undef

@@ -12,6 +12,14 @@ const router = require('express').Router()
 
 // Routes
 // =============================================================
+// Case.findAll({
+//   include: [{
+//     model: CaseRoleUser,
+//     include: [{ model: Role }, {model: User }],
+//   }],
+// });
+
+// Restaurant.findAll({ include: [{ model: Review, include: [User] }] })
 
 // Find all Restaurants and return them to the user with res.json
 router.get('/', function (req, res) {
@@ -56,5 +64,17 @@ router.delete('/:id', async function (req, res) {
     res.status(500).json({ errors: [err] })
   }
 })
+
+// PUT route for updating restaurant
+// router.patch('/:id', async function (req, res) {
+//   try {
+//     const restaurant = await Restaurant.findByPk(req.params.id)
+//     await restaurant.update(req.body)
+//     res.status(200).json({ data: restaurant })
+//   } catch (err) {
+//     console.log('GET /reviews failed \n', err)
+//     res.status(500).json({ errors: [err] })
+//   }
+// })
 
 module.exports = router
