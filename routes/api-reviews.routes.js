@@ -11,19 +11,19 @@ const express = require('express')
 const router = express.Router()
 
 // Import the Post and Author modes using object destructuring assignment
-const { Review, Restaurant, User } = require('../models')
+const { Review, Restaurant } = require('../models')
 
 // Routes
 // =============================================================
 
 // GET route for getting all of the reviews
 router.get('/', function (req, res) {
-  const filterCriteria = {}
+  // const filterCriteria = {}
   // if (req.query.restaurant_id) {
   //   req.query.RestaurantId = req.query.restaurant_id //====== change this to body
   // }
 
-  Review.findAll({ where: filterCriteria, include: [Restaurant, User] })
+  Review.findAll({ include: [Restaurant] })
     .then(reviewsArray => res.status(200).json({ data: reviewsArray }))
     .catch(err => {
       console.log('GET /posts failed \n', err)
@@ -33,7 +33,7 @@ router.get('/', function (req, res) {
 
 // Get route for retrieving a single review
 router.get('/:id', function (req, res) {
-  Review.findByPk(req.params.id, { include: [Restaurant, User] })
+  Review.findByPk(req.params.id, { include: [Restaurant] })
     .then(review => res.status(200).json({ data: review }))
     .catch(err => {
       console.log('GET /reviews failed \n', err)

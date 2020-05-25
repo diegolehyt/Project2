@@ -53,7 +53,7 @@ router.get('/restaurants/new', function (req, res) {
 })
 
 // The index route redirects to /landing route
-router.get('/', (req, res) => res.redirect('/index'))
+// router.get('/', (req, res) => res.redirect('/register'))
 
 // reviews page
 // The route for managing restaurants
@@ -87,10 +87,10 @@ router.get('/restaurants/reviews', async function (req, res) {
 router.post('/restaurants/reviews', async function (req, res) {
   try {
     // req.body.RestaurantId = 1
-    const { username, comment, RestaurantId } = req.body
+    const { username, comment, RestaurantId, rating, money, bussy } = req.body
 
     // save it into the db
-    const review = await Review.create({ username, comment, RestaurantId })
+    const review = await Review.create({ username, comment, RestaurantId, rating, money, bussy })
 
     console.log(review)
     res.status(200).redirect('/restaurants/reviews')
@@ -98,5 +98,32 @@ router.post('/restaurants/reviews', async function (req, res) {
     res.status(500).json({ errors: [err] }) // change to better error display
   }
 })
+
+// EXTRA for Reviews
+router.get('/restaurants/reviews/:id', async function (req, res) {
+  try {
+    const restaurant = await Restaurant.findByPk(req.params.id, { raw: true, include: [Review] })
+    // const restaurant = await Restaurant.findAll({ include: [Review] })
+    console.log('----------------------------------------------------\n' + await restaurant)
+    // console.log('one restaurant: \n' + restaurant)
+
+    res.status(200).render('reviews', { restaurant: restaurant })
+  } catch (err) {
+    res.status(500).json({ errors: [err] }) // change to better error display
+  }
+})
+
+// -----------------------------------------------------------------KC
+// router.get('/register', function (req, res) {
+//   res.render('register')
+// })
+
+// router.get('/login', function (req, res) {
+//   res.render('login')
+// })
+
+// router.get('/account', function (req, res) {
+//   res.render('account')
+// })
 
 module.exports = router

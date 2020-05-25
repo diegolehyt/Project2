@@ -25,29 +25,10 @@
               <h4  style="color: black;"> {{ name }} </h4>
             </div>
             <p>
-              <a id={{ id }} class="btn btn-primary btn-lg" data-id={{ id }} onclick="{{ name }}()" href="/restaurants/reviews">Add your review</a>
+              <a id={{ id }} class="btn btn-primary btn-lg" data-id={{ id }} onclick="{{ name }}()" href="/restaurants/reviews/{{ id }}">Add your review</a>
             </p>
           </div> 
-          {{!-- Rating --}}
-          <div class="rating">
 
-            <input type="radio" name="rating" id="r1">
-            <label for="r1"></label>
-
-            <input type="radio" name="rating" id="r2">
-            <label for="r2"></label>
-
-            <input type="radio" name="rating" id="r3">
-            <label for="r3"></label>
-
-            <input type="radio" name="rating" id="r4">
-            <label for="r4"></label>
-
-            <input type="radio" name="rating" id="r5">
-            <label for="r5"></label>
-
-          </div>
-          {{!-- Rating ends --}}
         </div>
         
     </div>

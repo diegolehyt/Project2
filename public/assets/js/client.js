@@ -16,6 +16,17 @@ document.getElementById('create-form1').addEventListener('submit', event => {
     // if (response.ok) location.reload()
   })
 })
+// FIX ----------------------------------------
+// let newRating = 5
+
+// fetch(`/api/restaurants/${id}`, {
+//   method: 'PATCH',
+//   headers: { 'Content-Type': 'application/json' },
+//   body: JSON.stringify({ averageRating: newRating })
+// }).then(response => {
+//   if (response.ok) location.reload()
+//   console.log(response)
+// })
 
 // document.getElementById('create-form').addEventListener('submit', event => {
 //   const newReview = {
