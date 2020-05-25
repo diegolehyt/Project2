@@ -100,18 +100,18 @@ router.post('/restaurants/reviews', async function (req, res) {
 })
 
 // EXTRA for Reviews
-// router.get('/restaurants/reviews/:id', async function (req, res) {
-//   try {
-//     const restaurant = await Restaurant.findByPk(req.params.id, { raw: true, include: [Review] })
-//     // const restaurant = await Restaurant.findAll({ include: [Review] })
-//     console.log('----------------------------------------------------\n' + await restaurant)
-//     // console.log('one restaurant: \n' + restaurant)
+router.get('/restaurants/reviews/:id', async function (req, res) {
+  try {
+    const restaurant = await Restaurant.findByPk(req.params.id, { raw: true, include: [Review] })
+    // const restaurant = await Restaurant.findAll({ include: [Review] })
+    console.log('----------------------------------------------------\n' + await restaurant)
+    // console.log('one restaurant: \n' + restaurant)
 
-//     res.status(200).render('reviews', { restaurant: restaurant })
-//   } catch (err) {
-//     res.status(500).json({ errors: [err] }) // change to better error display
-//   }
-// })
+    res.status(200).render('reviews', { restaurant: restaurant })
+  } catch (err) {
+    res.status(500).json({ errors: [err] }) // change to better error display
+  }
+})
 
 // -----------------------------------------------------------------KC
 // router.get('/register', function (req, res) {

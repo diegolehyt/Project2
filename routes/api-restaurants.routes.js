@@ -65,16 +65,16 @@ router.delete('/:id', async function (req, res) {
   }
 })
 
-// PUT route for updating restaurant
-// router.patch('/:id', async function (req, res) {
-//   try {
-//     const restaurant = await Restaurant.findByPk(req.params.id)
-//     await restaurant.update(req.body)
-//     res.status(200).json({ data: restaurant })
-//   } catch (err) {
-//     console.log('GET /reviews failed \n', err)
-//     res.status(500).json({ errors: [err] })
-//   }
-// })
+// PATCH route for updating restaurant
+router.patch('/:id', async function (req, res) {
+  try {
+    const restaurant = await Restaurant.findByPk(req.params.id)
+    await restaurant.update(req.body, { where: { id: req.params.id } })
+    res.status(200).json({ data: restaurant })
+  } catch (err) {
+    console.log('GET /reviews failed \n', err)
+    res.status(500).json({ errors: [err] })
+  }
+})
 
 module.exports = router
