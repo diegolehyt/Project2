@@ -1,26 +1,24 @@
 {
   "development": {
+
     "username": "root",
-    "password": "sum182magodeoz",
-    "database": "revisa_db",
+    "password": "password",
+    "database": "sequelize_passport",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "dialect": "mysql"
   },
   "test": {
-    "username": "root",
+    "username": "",
     "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "database": "",
+    "host": "",
+    "dialect": "mysql"
   },
   "production": {
-    "username": "root",
+    "username": "",
     "password": null,
-    "database": "database_production",
+    "database": "",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "dialect": "mysql"
   }
 }

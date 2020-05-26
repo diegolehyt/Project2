@@ -1,48 +1,16 @@
-// Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
-const bcrypt = require('bcryptjs')
-const { Model } = require('sequelize')
-// Creating our User model
 
-module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    toJSON () {
-      const attributes = super.toJSON()
-      delete attributes.password
-      return attributes
-    }
-  }
+module.exports = function (sequelize, Sequelize) {
+  const User = sequelize.define('user', {
+    id: { autoIncrement: true, primaryKey: true, type: Sequelize.INTEGER },
+    firstname: { type: Sequelize.STRING, notEmpty: true },
+    lastname: { type: Sequelize.STRING, notEmpty: true },
+    username: { type: Sequelize.TEXT },
+    about: { type: Sequelize.TEXT },
+    email: { type: Sequelize.STRING, validate: { isEmail: true } },
+    password: { type: Sequelize.STRING, allowNull: false },
+    last_login: { type: Sequelize.DATE },
+    status: { type: Sequelize.ENUM('active', 'inactive'), defaultValue: 'active' }
 
-  User.init(
-    {
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true
-        }
-      },
-      // The password cannot be null
-      password: {
-        type: DataTypes.STRING
-      }
-    },
-    {
-      sequelize,
-      defaultScope: {
-        attributes: { exclude: ['password'] }
-      },
-      scopes: {
-        withPassword: { attributes: {} }
-      }
-    }
-  )
-
-  User.beforeSave(async user => {
-    if (user.changed('password')) {
-      console.log('Will hash password')
-      user.password = await bcrypt.hash(user.password, 14)
-    }
   })
 
   return User

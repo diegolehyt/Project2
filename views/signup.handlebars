@@ -1,36 +1,21 @@
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-    </div>
-  </div>
-</nav>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h2>Sign Up Form</h2>
-      <form class="signup">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="email-input" placeholder="Email">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="password-input" placeholder="Password">
-        </div>
-        <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-          <span class="sr-only">Error:</span> <span class="msg"></span>
-        </div>
-        <button type="submit" class="btn btn-default">Sign Up</button>
-      </form>
-      <br />
-      <p>Or log in <a href="/login">here</a></p>
-    </div>
-  </div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<form id="signup" name="signup" method="post" action="/signup">
+  <label for="email">Email Address</label>
+  <input class="text" name="email" type="email" />
+  <label for="firstname">Firstname</label>
+  <input name="firstname" type="text" />
+  <label for="lastname">Lastname</label>
+  <input name="lastname" type="text" />
+  <label for="password">Password</label>
+  <input name="password" type="password" />
+  <input class="btn" type="submit" value="Sign Up" />
+</form>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="/assets/js/signup.js"></script>
-
-
+</body>
+</html>
