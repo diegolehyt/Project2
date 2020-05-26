@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // ==========================================\ Client JS logic /============================================== \\
 
 // GET restaurant Data
@@ -41,10 +42,10 @@ fetch(apiRestURL).then(function (response) { return response.json() }).then(func
   let sumRatingClean = 0
 
   allReviews.forEach(review => {
-    let oneRating = parseInt(review.rating)
-    let oneRatingMoney = parseInt(review.money)
-    let oneRatingBussy = parseInt(review.bussy)
-    let oneRatingClean = parseInt(review.clean)
+    const oneRating = parseInt(review.rating)
+    const oneRatingMoney = parseInt(review.money)
+    const oneRatingBussy = parseInt(review.bussy)
+    const oneRatingClean = parseInt(review.clean)
 
     sumRating = sumRating + oneRating
     sumRatingMoney = sumRatingMoney + oneRatingMoney
@@ -55,10 +56,10 @@ fetch(apiRestURL).then(function (response) { return response.json() }).then(func
   console.log(sumRating)
   console.log(allReviews.length)
 
-  let averageRating = sumRating / allReviews.length
-  let averageMoney = sumRatingMoney / allReviews.length
-  let averageBussy = sumRatingBussy / allReviews.length
-  let averageClean = sumRatingClean / allReviews.length
+  const averageRating = sumRating / allReviews.length
+  const averageMoney = sumRatingMoney / allReviews.length
+  const averageBussy = sumRatingBussy / allReviews.length
+  const averageClean = sumRatingClean / allReviews.length
 
   localStorage.setItem('averageRating', averageRating)
   localStorage.setItem('averageMoney', averageMoney)
