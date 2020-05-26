@@ -8,35 +8,37 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 
-// Dependencies for passport ADDED BY KC ----------------------------------------------------------------------
-// Requiring necessary npm packages
-const session = require('express-session')
-// Requiring passport as we've configured it
-const passport = require('./config/passport')
-// const methodOverride = require('method-override')
-// -------------------------------------------------------------------------------------------------------------
 // Requiring our models for syncing to the MySQL database
 // Remember: This syntax imports the `db` object exported from the
 // `./models/index.js` module.
 const db = require('./models')
+// Models
+const models = require('./models')
 
 // Sets up the Express App
 // =============================================================
 const app = express()
 
+const passport = require('passport')
+const session = require('express-session')
+const bodyParser = require('body-parser')
+
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+
+// For BodyParser
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 // Allow Express to automatically serve static resource like the
 // HTML, CSS and JavaScript for the frontend client application.
 app.use(express.static('./public'))
 
-// We need to use sessions to keep track of our user's login status------------------------------------------
-app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }))
+// For Passport
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })) // session secret
 app.use(passport.initialize())
-app.use(passport.session())
-
+app.use(passport.session()) // persistent login sessions
 // Handlebars set up
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -51,9 +53,12 @@ app.use('/api/restaurants', require('./routes/api-restaurants.routes.js'))
 // Pages
 app.use(require('./routes/handlebars.routes.js'))
 
-// Requiring our routes-----------------------------------------------------
-require('./routes/html-routes.js')(app)
-require('./routes/api-routes.js')(app)
+// Routess
+// eslint-disable-next-line no-unused-vars
+const authRoute = require('./routes/auth.js')(app, passport)
+
+// load passport strategies
+require('./config/passport/passport.js')(passport, models.user)
 
 // -------------------------------------------------------------------------------------------------------------------
 // Syncing our sequelize models and then starting our express app
