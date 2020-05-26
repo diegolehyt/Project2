@@ -68,8 +68,9 @@ router.delete('/:id', async function (req, res) {
 // PATCH route for updating restaurant
 router.patch('/:id', async function (req, res) {
   try {
+    const { averageRating, averageMoney, averageBussy, averageClean } = req.body
     const restaurant = await Restaurant.findByPk(req.params.id)
-    await restaurant.update(req.body, { where: { id: req.params.id } })
+    await restaurant.update({ averageRating, averageMoney, averageBussy, averageClean }, { where: { id: req.params.id } })
     res.status(200).json({ data: restaurant })
   } catch (err) {
     console.log('GET /reviews failed \n', err)

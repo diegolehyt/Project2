@@ -21,16 +21,51 @@ fetch(apiRestURL).then(function (response) { return response.json() }).then(func
   allReviews.forEach(review => {
     const reviewBlock = document.createElement('div')
     const nombre = document.createElement('div')
+    const titulo = document.createElement('div')
     const comentario = document.createElement('div')
 
     nombre.innerHTML = review.username
+    titulo.innerHTML = review.title
     comentario.innerHTML = review.comment
 
     reviewBlock.appendChild(nombre)
+    reviewBlock.appendChild(titulo)
     reviewBlock.appendChild(comentario)
 
     reviewsContainer.appendChild(reviewBlock)
   })
+  // RATING average revers the order of the stars
+  let sumRating = 0
+  let sumRatingMoney = 0
+  let sumRatingBussy = 0
+  let sumRatingClean = 0
+
+  allReviews.forEach(review => {
+    let oneRating = parseInt(review.rating)
+    let oneRatingMoney = parseInt(review.money)
+    let oneRatingBussy = parseInt(review.bussy)
+    let oneRatingClean = parseInt(review.clean)
+
+    sumRating = sumRating + oneRating
+    sumRatingMoney = sumRatingMoney + oneRatingMoney
+    sumRatingBussy = sumRatingBussy + oneRatingBussy
+    sumRatingClean = sumRatingClean + oneRatingClean
+  })
+
+  console.log(sumRating)
+  console.log(allReviews.length)
+
+  let averageRating = sumRating / allReviews.length
+  let averageMoney = sumRatingMoney / allReviews.length
+  let averageBussy = sumRatingBussy / allReviews.length
+  let averageClean = sumRatingClean / allReviews.length
+
+  localStorage.setItem('averageRating', averageRating)
+  localStorage.setItem('averageMoney', averageMoney)
+  localStorage.setItem('averageBussy', averageBussy)
+  localStorage.setItem('averageClean', averageClean)
+
+  updateRating()
 })
 
 // localStorage.clear()
@@ -40,11 +75,13 @@ document.getElementById('create-form').addEventListener('submit', event => {
   event.preventDefault()
   const newReview = {
     username: document.getElementById('userName').value.trim(),
+    title: document.getElementById('title').value.trim(),
     comment: document.getElementById('comment').value.trim(),
     RestaurantId: restaurantId,
     rating: document.querySelector('[name=rating]:checked').value.trim(),
     money: document.querySelector('[name=rating2]:checked').value.trim(),
-    bussy: document.querySelector('[name=rating3]:checked').value.trim()
+    bussy: document.querySelector('[name=rating3]:checked').value.trim(),
+    clean: document.querySelector('[name=rating4]:checked').value.trim()
   }
 
   // eslint-disable-next-line no-undef
@@ -54,21 +91,26 @@ document.getElementById('create-form').addEventListener('submit', event => {
     body: JSON.stringify(newReview)
   }).then(response => {
     console.log(response)
-    // if (response.ok) location.reload()
+    if (response.ok) location.reload()
   })
 })
 
-document.getElementById('create-form').addEventListener('submit', event => {
-  const newAverageRating = 5
+async function updateRating () {
+  const newRating = {
+    averageRating: localStorage.getItem('averageRating'),
+    averageMoney: localStorage.getItem('averageMoney'),
+    averageBussy: localStorage.getItem('averageBussy'),
+    averageClean: localStorage.getItem('averageClean')
+  }
 
   // eslint-disable-next-line no-undef
-  fetch(`/api/restaurants/${restaurantId}`, {
+  await fetch(`/api/restaurants/${restaurantId}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ averageRating: newAverageRating })
+    body: JSON.stringify(newRating)
   }).then(response => {
     // eslint-disable-next-line no-undef
-    if (response.ok) location.reload()
+    // if (response.ok) location.reload()
     console.log(response)
   })
-})
+}

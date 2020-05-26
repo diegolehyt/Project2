@@ -8,6 +8,11 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       validate: { len: [1] }
     },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { len: [1] }
+    },
     comment: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -22,6 +27,10 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true
     },
     bussy: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    clean: {
       type: DataTypes.STRING,
       allowNull: true
     }

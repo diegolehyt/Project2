@@ -6,12 +6,49 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       validate: { len: [1] }
     },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { len: [1] }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { len: [1] }
+    },
+    language: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { len: [1] }
+    },
+    website: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { len: [1] }
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { len: [1] }
+    },
     image: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: { len: [1] }
     },
     averageRating: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    averageMoney: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    averageBussy: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    averageClean: {
       type: DataTypes.STRING,
       allowNull: true
     }
