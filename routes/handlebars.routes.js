@@ -27,7 +27,7 @@ router.get('/restaurants', async function (req, res) {
     const restaurants = await Restaurant.findAll({
       raw: true
     })
-    console.log(restaurants)
+    console.log(req.user)
 
     res.status(200).render('restaurants', { restaurants: restaurants })
   } catch (err) {

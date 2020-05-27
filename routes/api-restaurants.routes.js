@@ -12,17 +12,19 @@ const router = require('express').Router()
 
 // Routes
 // =============================================================
-// Case.findAll({
+// {
 //   include: [{
-//     model: CaseRoleUser,
-//     include: [{ model: Role }, {model: User }],
-//   }],
-// });
+//     model: Review,
+//     include: { model: User }
+//   }]
+// }
+//
 
 // Restaurant.findAll({ include: [{ model: Review, include: [User] }] })
 
 // Find all Restaurants and return them to the user with res.json
 router.get('/', function (req, res) {
+  // console.log('USER DATA', req.user)
   Restaurant.findAll({ include: [Review] })
     .then(restaurantsArray => res.status(200).json({ data: restaurantsArray }))
     .catch(err => {

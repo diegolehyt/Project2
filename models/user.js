@@ -1,6 +1,6 @@
 
 module.exports = function (sequelize, Sequelize) {
-  const User = sequelize.define('user', {
+  const User = sequelize.define('User', {
     id: { autoIncrement: true, primaryKey: true, type: Sequelize.INTEGER },
     firstname: { type: Sequelize.STRING, notEmpty: true },
     lastname: { type: Sequelize.STRING, notEmpty: true },
@@ -12,6 +12,12 @@ module.exports = function (sequelize, Sequelize) {
     status: { type: Sequelize.ENUM('active', 'inactive'), defaultValue: 'active' }
 
   })
+
+  // User.associate = function (models) {
+  //   User.hasMany(models.Review, {
+  //     onDelete: 'cascade'
+  //   })
+  // }
 
   return User
 }
