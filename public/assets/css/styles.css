@@ -12,10 +12,11 @@ body, html {
   height: 100%; 
 
   /* Center and scale the image nicely */
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: white;"
+  color: white;
 }
 
 /* Rating system */
