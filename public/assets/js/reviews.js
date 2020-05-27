@@ -20,19 +20,89 @@ fetch(apiRestURL).then(function (response) { return response.json() }).then(func
 
   const allReviews = data.data.Reviews
   allReviews.forEach(review => {
-    const reviewBlock = document.createElement('div')
-    const nombre = document.createElement('div')
-    const titulo = document.createElement('div')
-    const comentario = document.createElement('div')
+    // const reviewBlock = document.createElement('div')
+    // const nombre = document.createElement('div')
+    // const titulo = document.createElement('div')
+    // const comentario = document.createElement('div')
 
-    nombre.innerHTML = review.username
-    titulo.innerHTML = review.title
-    comentario.innerHTML = review.comment
+    // nombre.innerHTML = review.username
+    // titulo.innerHTML = review.title
+    // comentario.innerHTML = review.comment
 
-    reviewBlock.appendChild(nombre)
-    reviewBlock.appendChild(titulo)
-    reviewBlock.appendChild(comentario)
+    // reviewBlock.appendChild(nombre)
+    // reviewBlock.appendChild(titulo)
+    // reviewBlock.appendChild(comentario)
 
+    // reviewsContainer.appendChild(reviewBlock)
+    // ------------ REAL --------------------
+    const reviewBlock = document.createElement('li')
+    reviewBlock.className = 'uk-transition-toggle'
+    reviewBlock.setAttribute('tabindex', '0')
+
+    const reviewSubBlock = document.createElement('article')
+    reviewSubBlock.className = 'uk-comment uk-comment-primary uk-width-3-4@l uk-margin-bottom uk-transition-scale-up uk-transition-opaque'
+
+    reviewBlock.appendChild(reviewSubBlock)
+
+    // scope 2
+    const reviewHeader = document.createElement('header')
+    reviewHeader.className = 'uk-comment-header uk-grid-medium uk-flex-middle'
+
+    const reviewCommentBody = document.createElement('div')
+    reviewCommentBody.className = 'uk-comment-body'
+
+    reviewSubBlock.appendChild(reviewHeader)
+    reviewSubBlock.appendChild(reviewCommentBody)
+
+    // scope 3 A
+    const dataDiv = document.createElement('div')
+    dataDiv.className = 'uk-width-expand'
+    reviewHeader.appendChild(dataDiv)
+
+    const author = document.createElement('h4')
+    author.className = 'uk-comment-title uk-margin-remove'
+    author.innerHTML = review.username
+    dataDiv.appendChild(author)
+
+    const ulBlock = document.createElement('ul')
+    ulBlock.className = 'uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top'
+    dataDiv.appendChild(ulBlock)
+
+    // scope 4 A
+    const timeStamp = document.createElement('li')
+    timeStamp.innerHTML = review.createdAt // substring later
+    ulBlock.appendChild(timeStamp)
+
+    const startBlock = document.createElement('li')
+    startBlock.className = 'uk-text-large uk-margin-small@s uk-width-small@s'
+    startBlock.innerHTML = `${review.rating} <a uk-icon="icon: star; ratio: 2" class="uk-text-warning"></a>`
+    ulBlock.appendChild(startBlock)
+
+    const moneyBlock = document.createElement('li')
+    moneyBlock.className = 'uk-text-normal'
+    moneyBlock.innerHTML = `${review.money} <a uk-icon="credit-card" class="uk-text-secondary"></a>`
+    ulBlock.appendChild(moneyBlock)
+
+    const bussyBlock = document.createElement('li')
+    bussyBlock.className = 'uk-text-normal'
+    bussyBlock.innerHTML = `${review.bussy} <a uk-icon="users" class="uk-text-success"></a>`
+    ulBlock.appendChild(bussyBlock)
+
+    const cleanBlock = document.createElement('li')
+    cleanBlock.className = 'uk-text-normal'
+    cleanBlock.innerHTML = `${review.clean} <a uk-icon="warning" class="uk-text-primary"></a>`
+    ulBlock.appendChild(cleanBlock)
+
+    // scope 3 B
+    const titleBlock = document.createElement('h2')
+    titleBlock.innerHTML = review.title
+    reviewCommentBody.appendChild(titleBlock)
+
+    const commentBlock = document.createElement('p')
+    commentBlock.innerHTML = review.comment
+    reviewCommentBody.appendChild(commentBlock)
+
+    // connect DOM
     reviewsContainer.appendChild(reviewBlock)
   })
   // RATING average revers the order of the stars
