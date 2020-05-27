@@ -37,10 +37,10 @@ router.get('/restaurants', async function (req, res) {
 
 router.post('/restaurants', async function (req, res) {
   try {
-    const { name, image } = req.body
+    const { name, image, location, phone, email, language, website } = req.body
 
     // save it into the db
-    await Restaurant.create({ name, image })
+    await Restaurant.create({ name, image, location, phone, email, language, website })
     res.status(200).redirect('/restaurants')
   } catch (err) {
     res.status(500).json({ errors: [err] }) // change to better error display
@@ -87,10 +87,10 @@ router.get('/restaurants/reviews', async function (req, res) {
 router.post('/restaurants/reviews', async function (req, res) {
   try {
     // req.body.RestaurantId = 1
-    const { username, comment, RestaurantId, rating, money, bussy } = req.body
+    const { username, title, comment, RestaurantId, rating, money, bussy, clean } = req.body
 
     // save it into the db
-    const review = await Review.create({ username, comment, RestaurantId, rating, money, bussy })
+    const review = await Review.create({ username, comment, title, RestaurantId, rating, money, bussy, clean })
 
     console.log(review)
     res.status(200).redirect('/restaurants/reviews')

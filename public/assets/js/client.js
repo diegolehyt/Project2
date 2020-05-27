@@ -3,7 +3,12 @@
 document.getElementById('create-form1').addEventListener('submit', event => {
   const newRestaurant = {
     name: document.getElementById('restaurantName').value.trim(),
-    image: document.getElementById('restaurantImg').value.trim()
+    location: document.getElementById('restaurantLocation').value.trim(),
+    image: document.getElementById('restaurantImg').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    website: document.getElementById('website').value.trim(),
+    language: document.getElementById('language').value.trim()
   }
 
   // eslint-disable-next-line no-undef
@@ -16,30 +21,3 @@ document.getElementById('create-form1').addEventListener('submit', event => {
     // if (response.ok) location.reload()
   })
 })
-// FIX ----------------------------------------
-// let newRating = 5
-
-// fetch(`/api/restaurants/${id}`, {
-//   method: 'PATCH',
-//   headers: { 'Content-Type': 'application/json' },
-//   body: JSON.stringify({ averageRating: newRating })
-// }).then(response => {
-//   if (response.ok) location.reload()
-//   console.log(response)
-// })
-
-// document.getElementById('create-form').addEventListener('submit', event => {
-//   const newReview = {
-//     username: document.getElementById('userName').value.trim(),
-//     comment: document.getElementById('comment').value.trim()
-//   }
-
-//   fetch('/restaurants/reviews', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(newReview)
-//   }).then(response => {
-//     console.log(response)
-//     // if (response.ok) location.reload()
-//   })
-// })
