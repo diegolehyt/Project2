@@ -40,13 +40,10 @@ module.exports = function (sequelize, DataTypes) {
     Review.belongsTo(models.Restaurant, {
       foreignKey: { allowNull: false }
     })
+    // Review.belongsTo(models.User, {
+    //   foreignKey: { allowNull: false }
+    // })
   }
-
-  // Review.associate = function (models) {
-  //   Review.belongsTo(models.User, {
-  //     onDelete: 'cascade'
-  //   })
-  // }
 
   return Review
 }

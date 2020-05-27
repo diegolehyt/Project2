@@ -58,7 +58,7 @@ app.use(require('./routes/handlebars.routes.js'))
 const authRoute = require('./routes/auth.js')(app, passport)
 
 // load passport strategies
-require('./config/passport/passport.js')(passport, models.user)
+require('./config/passport/passport.js')(passport, models.User)
 
 // -------------------------------------------------------------------------------------------------------------------
 // Syncing our sequelize models and then starting our express app

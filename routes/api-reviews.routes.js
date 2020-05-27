@@ -22,7 +22,6 @@ router.get('/', function (req, res) {
   // if (req.query.restaurant_id) {
   //   req.query.RestaurantId = req.query.restaurant_id //====== change this to body
   // }
-
   Review.findAll({ include: [Restaurant] })
     .then(reviewsArray => res.status(200).json({ data: reviewsArray }))
     .catch(err => {
@@ -43,7 +42,7 @@ router.get('/:id', function (req, res) {
 
 // POST route for saving a new review
 router.post('/', function (req, res) {
-  console.log('New review data received: \n', req.body)
+  console.log('REQ USER', req.user)
   Review.create(req.body)
     .then(review => res.status(201).json({ data: review }))
     .catch(err => {
