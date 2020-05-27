@@ -1,11 +1,4 @@
-<div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <h3> Reviews</h3>
-      </div>
-    </div>
-
-    <div class="row">
+<div class="row">
  
         <h4 id="restaurantN" class="col-12"></h4>
         <div class="img-thumbnail rounded float-right" style="height: 15%; width: 15%">
@@ -16,135 +9,116 @@
 
         </div>
 
-        <form id="create-form" class="row">
-          {{!-- Rating --}}
-          <div class="rating form-group col-5">
-
-            <input type="radio" name="rating" value="1" id="r1">
-            <label for="r1"></label>
-
-            <input type="radio" name="rating" value="2" id="r2">
-            <label for="r2"></label>
-
-            <input type="radio" name="rating" value="3" id="r3">
-            <label for="r3"></label>
-
-            <input type="radio" name="rating" value="4" id="r4">
-            <label for="r4"></label>
-
-            <input type="radio" name="rating" value="5" id="r5">
-            <label for="r5"></label>
-
-          </div>
-          <div class="col-7"></div>
-          {{!-- Rating ends --}}
-          {{!-- Rating money--}}
-          <div class="rating2 form-group col-5">
-
-            <input type="radio" name="rating2" value="1" id="r11">
-            <label for="r11"></label>
-
-            <input type="radio" name="rating2" value="2" id="r22">
-            <label for="r22"></label>
-
-            <input type="radio" name="rating2" value="3" id="r33">
-            <label for="r33"></label>
-
-            <input type="radio" name="rating2" value="4" id="r44">
-            <label for="r44"></label>
-
-            <input type="radio" name="rating2" value="5" id="r55">
-            <label for="r55"></label>
-
-          </div>
-          <div class="col-7"></div>
-          {{!-- Rating money ends --}}
-          {{!-- Rating Food--}}
-          <div class="rating3 form-group col-5">
-
-            <input type="radio" name="rating3" value="1" id="r111">
-            <label for="r111"></label>
-
-            <input type="radio" name="rating3" value="2" id="r222">
-            <label for="r222"></label>
-
-            <input type="radio" name="rating3" value="3" id="r333">
-            <label for="r333"></label>
-
-            <input type="radio" name="rating3" value="4" id="r444">
-            <label for="r444"></label>
-
-            <input type="radio" name="rating3" value="5" id="r555">
-            <label for="r555"></label>
-
-          </div>
-          <div class="col-7"></div>
-          {{!-- Rating Food ends --}}
-          {{!-- Rating Clean--}}
-          <div class="rating4 form-group col-5">
-
-            <input type="radio" name="rating4" value="1" id="r1111">
-            <label for="r1111"></label>
-
-            <input type="radio" name="rating4" value="2" id="r2222">
-            <label for="r2222"></label>
-
-            <input type="radio" name="rating4" value="3" id="r3333">
-            <label for="r3333"></label>
-
-            <input type="radio" name="rating4" value="4" id="r4444">
-            <label for="r4444"></label>
-
-            <input type="radio" name="rating4" value="5" id="r5555">
-            <label for="r5555"></label>
-
-          </div>
-          <div class="col-7"></div>
-          {{!-- Rating Clean ends --}}
-          
-          <div class="form-group col-12">
-            <input type="text" id="userName" name="username" />
-            <input type="text" id="title" name="title" />
-            <input type="text" id="comment" name="comment" placeholder="write your comment here">
-            <button type="submit">Submit</button>
-          </div>
-
-
-        </form>
-    </div>
 </div>
+<ul id="reviewsContainer" class="uk-comment-list">
+
+</ul>
+<div class="uk-margin-xlarge-top">
+            <h1 class="uk-heading-divider" style="color: antiquewhite;">New Review</h1>
+            <form class="uk-form-stacked uk-card uk-card-body uk-card-secondary" id="create-form">
+                <fieldset class="uk-fieldset">
+                    
+                    <label class="uk-form-label uk-text-bold" for="form-stacked-text">Your name</label>
+                    
+                    <div class="uk-margin-bottom">
+                        <input class="uk-input" type="text" placeholder="ex: John Doe" name="username" id="userName">
+                    </div>
+                    
+                    <label class="uk-form-label" for="form-stacked-text">Title of comment</label>
+                    
+                    <div class="uk-margin-bottom">
+                        <input class="uk-input" type="text" placeholder="ex: Excellent experience!" name="title" id="title">
+                    </div>
+
+                    
+                    <div class="uk-margin-bottom">
+                        <label class="uk-form-label" for="form-stacked-textarea">Comment</label>
+                        <textarea class="uk-textarea" rows="5" placeholder="ex: This place was wonderful!" name="comment" id="comment"></textarea>
+                    </div>
+                    
+                    
+                    
+                    
+                    <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span uk-icon="icon: star"></span> General Rating <span class="uk-text-lighter uk-text-italic">(Food, atmosphere, service)</span></label>
+                    <div class="uk-margin-bottom" uk-grid>
+                        
+                        <input class="uk-range uk-width-5-6" type="range" value="5" min="1" max="5" step="1" id="generalSlider">
+                        <div class="uk-width-expand uk-text-center">
+                            <span class="uk-width-extend">
+                                <span class="uk-text-large uk-text-warning uk-text-bolder" id="generalValue"></span>/5
+                            </span>
+                        </div>
+                    </div>
+                    <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span uk-icon="icon: credit-card"></span> Affordability <span class="uk-text-lighter uk-text-italic">(Not worth the price ---> bang 4 buck)</span></label>
+                    <div class="uk-margin-bottom" uk-grid>
+                        <input class="uk-range uk-width-5-6" type="range" value="5" min="1" max="5" step="1" id="affordSlider">
+                        <div class="uk-width-expand uk-text-center">
+                            <span class="uk-width-extend">
+                                <span class="uk-text-large uk-text-warning uk-text-bolder" id="affordValue"></span>/5
+                            </span>
+                        </div>
+                    </div>
+                    <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span uk-icon="icon: users"></span> Busyness <span class="uk-text-lighter uk-text-italic">(Long wait (1h+) ---> Fast service (10min/less))</span></label>
+                    <div class="uk-margin-bottom" uk-grid>
+                        <input class="uk-range uk-width-5-6" type="range" value="5" min="1" max="5" step="1" id="busynessSlider">
+                        <div class="uk-width-expand uk-text-center">
+                            <span class="uk-width-extend">
+                                <span class="uk-text-large uk-text-warning uk-text-bolder" id="busynessValue"></span>/5
+                            </span>
+                        </div>
+                    </div>
+                    <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span uk-icon="icon: warning"></span> Cleanliness <span class="uk-text-lighter uk-text-italic">(Not Sanitary ---> Ultra Clean)</span></label>
+                    <div class="uk-margin-bottom" uk-grid>
+                        <input class="uk-range uk-width-5-6" type="range" value="5" min="1" max="5" step="1" id="cleanSlider">
+                        <div class="uk-width-expand uk-text-center">
+                            <span class="uk-width-extend">
+                                <span class="uk-text-large uk-text-warning uk-text-bolder" id="cleanValue"></span>/5
+                            </span>
+                        </div>
+                    </div>
+                    <button class="uk-button uk-button-primary uk-align-center" type="submit">Submit</button>
+                    
+                    
+                </fieldset>
+            </form>
+</div>
+
+
+
 
 <script src="/assets/js/reviews.js"></script>
 
-       {{!--{{#each restaurant}}
-        {{log this}}
-        <div class=" col-sm-12">            
-          <div class="img-thumbnail rounded float-left">
-            <img src={{ image }} style="width: 40%; height: 40%">
-            <div class="caption">
-              <h4  style="color: black;"> {{ name }} </h4>
-            </div>
-          </div>
-        
-          <div class=" col-sm-12">
-            
-            <span>{{Reviews}}</span>
-            <p>{{this}}</p>
-          </div>
-        </div>
-        {{/each}} --}}
+<script>
+  // Client side JS
 
-        {{!-- <form action="/restaurants/reviews" method="POST">
-          <input type="text" name="username" />
-          <input type="text" name="comment" placeholder="write your comment here">
-          <button type="submit">Submit</button>
-        </form>  --}}
+  const sliderG = document.getElementById("generalSlider");
+  const outputG = document.getElementById("generalValue");
+  outputG.innerHTML = sliderG.value; // Display the default slider value
+
+  const sliderA = document.getElementById("affordSlider");
+  const outputA = document.getElementById("affordValue");
+  outputA.innerHTML = sliderA.value; // Display the default slider value
+
+  const sliderB = document.getElementById("busynessSlider");
+  const outputB = document.getElementById("busynessValue");
+  outputB.innerHTML = sliderB.value; // Display the default slider value
+
+  const sliderC = document.getElementById("cleanSlider");
+  const outputC = document.getElementById("cleanValue");
+  outputC.innerHTML = sliderC.value; // Display the default slider value
 
 
-
-
-
-
-
-
-
+  // Update the current slider value (each time you drag the slider handle)
+  sliderG.oninput = function() {
+    outputG.innerHTML = sliderG.value;
+  }
+  sliderA.oninput = function() {
+    outputA.innerHTML = this.value;
+  }
+  sliderB.oninput = function() {
+    outputB.innerHTML = this.value;
+  }
+  sliderC.oninput = function() {
+    outputC.innerHTML = this.value;
+  }
+</script>
