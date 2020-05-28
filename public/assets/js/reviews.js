@@ -67,7 +67,7 @@ fetch(apiRestURL).then(function (response) { return response.json() }).then(func
     // connect DOM
     reviewsContainer.appendChild(reviewBlock)
   })
-  // RATING average revers the order of the stars
+  // RATING
   let sumRating = 0
   let sumRatingMoney = 0
   let sumRatingBussy = 0
@@ -106,8 +106,9 @@ fetch(apiRestURL).then(function (response) { return response.json() }).then(func
   //   location.reload()
   //   break
   // }
-  updateRating()
   average()
+  updateRating()
+
   async function average () {
     const restaurantStar = document.getElementById('restaurantStar')
     const restaurantMoney = document.getElementById('restaurantMoney')
@@ -142,6 +143,8 @@ document.getElementById('create-form').addEventListener('submit', event => {
   }).then(response => {
     console.log(response)
     if (response.ok) location.reload()
+    if (response) location.reload()
+    // location.replace('/restaurants/reviews')
   })
 })
 async function updateRating () {
@@ -158,7 +161,7 @@ async function updateRating () {
     body: JSON.stringify(newRating)
   }).then(response => {
     // eslint-disable-next-line no-undef
-    // if (response.ok) location.reload()
+    // if (response.ok) location.replace('/restaurants/reviews')
     console.log(response)
   })
 }

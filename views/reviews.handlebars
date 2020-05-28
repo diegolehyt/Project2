@@ -78,6 +78,7 @@
 <br>
 <hr>
 <a href="#" class="uk-button uk-button-text uk-light uk-text-large uk-margin-left" uk-scroll>Back to top</a>
+<a class="uk-button uk-button-text uk-light uk-text-large uk-margin-left" uk-scroll  id='goUp' style="opacity: 0;">.</a>
 <br>
 <br>
 <br>
@@ -110,4 +111,7 @@
   sliderC.oninput = function() {
     outputC.innerHTML = this.value;
   }
+  document.getElementById('goUp').addEventListener('click', async function(){
+    location.reload()
+  })
 </script>

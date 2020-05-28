@@ -1,9 +1,9 @@
-<div class="uk-child-width-1-2@m uk-child-width-1-3@xl uk-margin-medium-bottom" uk-grid>
+<div class="uk-child-width-1-2@m uk-child-width-1-3@l uk-margin-medium-bottom" uk-grid>
 {{#each restaurants}}
                 <div>
                     <div class="uk-card uk-card-default uk-card-hover">
                         <div class="uk-card-media-top uk-inline uk-transition-toggle" tabindex="0">
-                            <img data-src={{ image }} alt="nice grass" width="580" height="435" style="width: 100%; height: 100%" class="uk-align-center" uk-img>
+                            <img data-src={{ image }} alt="nice grass" width="580" height="435" class="uk-align-center" uk-img>
                             <div class="uk-overlay uk-overlay-default uk-position-bottom uk-transition-slide-bottom">
                                 <p>{{ name }} - {{ location }}</p>
                             </div>
@@ -11,7 +11,7 @@
                         <div class="uk-card-body">
                             <div class="uk-grid-divider uk-child-width-expand" uk-grid>
                                 <h3 class="uk-width-expand">{{ name }}</h3>
-                                <span class="uk-text-large uk-width-small uk-width-2-5@s">{{ averageRating }} <a uk-icon="icon: star; ratio: 2" class="uk-text-warning "></a></span>
+                                <span class="uk-text-large uk-width-small uk-width-1-2@l uk-width-2-5@s">{{ averageRating }} <a uk-icon="icon: star; ratio: 2" class="uk-text-warning "></a></span>
                             </div>
                             <p>{{ description }}</p>
                             <p><a uk-icon="credit-card" class="uk-text-secondary"></a> Pricing: {{ averageMoney }}</p>
