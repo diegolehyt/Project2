@@ -1,23 +1,16 @@
 /* eslint-disable no-undef */
 // ==========================================\ Client JS logic /============================================== \\
-
 // GET restaurant Data
 // eslint-disable-next-line no-undef
 const restaurantId = localStorage.getItem('vOneLocalStorage')
-
 const apiRestURL = `/api/restaurants/${restaurantId}`
-
 // eslint-disable-next-line no-undef
 fetch(apiRestURL).then(function (response) { return response.json() }).then(function (data) {
   const restaurantN = document.getElementById('restaurantN')
   const reviewsContainer = document.getElementById('reviewsContainer')
-  // let restaurantImg = document.getElementById('restaurantImg')
-
   restaurantN.innerHTML = (data.data.name)
   document.getElementById('restaurantImg').setAttribute('src', `${data.data.image}`)
-
   console.log(data.data.Reviews)
-
   const allReviews = data.data.Reviews
   allReviews.forEach(review => {
     const reviewBlock = document.createElement('li')
@@ -46,7 +39,7 @@ fetch(apiRestURL).then(function (response) { return response.json() }).then(func
     dataDiv.appendChild(ulBlock)
     // scope 4 A
     const timeStamp = document.createElement('li')
-    timeStamp.innerHTML = review.createdAt // substring later
+    timeStamp.innerHTML = (review.createdAt).substr(0, 10) // substring later
     ulBlock.appendChild(timeStamp)
     const startBlock = document.createElement('li')
     startBlock.className = 'uk-text-large uk-margin-small@s uk-width-small@s'
@@ -79,42 +72,60 @@ fetch(apiRestURL).then(function (response) { return response.json() }).then(func
   let sumRatingMoney = 0
   let sumRatingBussy = 0
   let sumRatingClean = 0
-
   allReviews.forEach(review => {
     const oneRating = parseInt(review.rating)
     const oneRatingMoney = parseInt(review.money)
     const oneRatingBussy = parseInt(review.bussy)
     const oneRatingClean = parseInt(review.clean)
-
     sumRating = sumRating + oneRating
     sumRatingMoney = sumRatingMoney + oneRatingMoney
     sumRatingBussy = sumRatingBussy + oneRatingBussy
     sumRatingClean = sumRatingClean + oneRatingClean
   })
-
   console.log(sumRating)
   console.log(allReviews.length)
-
-  const averageRating = sumRating / allReviews.length
-  const averageMoney = sumRatingMoney / allReviews.length
-  const averageBussy = sumRatingBussy / allReviews.length
-  const averageClean = sumRatingClean / allReviews.length
-
+  const averageRating = (sumRating / allReviews.length).toFixed(1)
+  const averageMoney = (sumRatingMoney / allReviews.length).toFixed(1)
+  const averageBussy = (sumRatingBussy / allReviews.length).toFixed(1)
+  const averageClean = (sumRatingClean / allReviews.length).toFixed(1)
   localStorage.setItem('averageRating', averageRating)
   localStorage.setItem('averageMoney', averageMoney)
   localStorage.setItem('averageBussy', averageBussy)
   localStorage.setItem('averageClean', averageClean)
-
+  // main()
+  // async function main () {
+  //   try {
+  //     await updateRating()
+  //     await average()
+  //     await load()
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+  // async function load () {
+  //   location.reload()
+  //   break
+  // }
   updateRating()
+  average()
+  async function average () {
+    const restaurantStar = document.getElementById('restaurantStar')
+    const restaurantMoney = document.getElementById('restaurantMoney')
+    const restaurantBussy = document.getElementById('restaurantBussy')
+    const restaurantClean = document.getElementById('restaurantClean')
+    const restaurantDescription = document.getElementById('restaurantDescription')
+    restaurantStar.innerHTML = await (data.data.averageRating)
+    restaurantMoney.innerHTML = await (data.data.averageMoney)
+    restaurantBussy.innerHTML = await (data.data.averageBussy)
+    restaurantClean.innerHTML = await (data.data.averageClean)
+    restaurantDescription.innerHTML = await (data.data.description)
+  }
 })
-
 // localStorage.clear()
-
 // POST reviews
 document.getElementById('create-form').addEventListener('submit', event => {
   event.preventDefault()
   const newReview = {
-    username: document.getElementById('userName').value.trim(),
     title: document.getElementById('title').value.trim(),
     comment: document.getElementById('comment').value.trim(),
     RestaurantId: restaurantId,
@@ -123,7 +134,6 @@ document.getElementById('create-form').addEventListener('submit', event => {
     bussy: document.getElementById('busynessSlider').value.trim(),
     clean: document.getElementById('cleanSlider').value.trim()
   }
-
   // eslint-disable-next-line no-undef
   fetch('/restaurants/reviews', {
     method: 'POST',
@@ -134,7 +144,6 @@ document.getElementById('create-form').addEventListener('submit', event => {
     if (response.ok) location.reload()
   })
 })
-
 async function updateRating () {
   const newRating = {
     averageRating: localStorage.getItem('averageRating'),
@@ -142,7 +151,6 @@ async function updateRating () {
     averageBussy: localStorage.getItem('averageBussy'),
     averageClean: localStorage.getItem('averageClean')
   }
-
   // eslint-disable-next-line no-undef
   await fetch(`/api/restaurants/${restaurantId}`, {
     method: 'PATCH',

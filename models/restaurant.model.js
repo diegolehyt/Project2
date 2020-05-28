@@ -36,6 +36,10 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true,
       validate: { len: [1] }
     },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     averageRating: {
       type: DataTypes.STRING,
       allowNull: true
@@ -53,12 +57,10 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true
     }
   })
-
   Restaurant.associate = function (models) {
     Restaurant.hasMany(models.Review, {
       onDelete: 'cascade'
     })
   }
-
   return Restaurant
 }
