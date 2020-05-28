@@ -1,47 +1,42 @@
-<div class="row">
- 
-        <h4 id="restaurantN" class="col-12"></h4>
-        <div class="img-thumbnail rounded float-right" style="height: 15%; width: 15%">
-          <img id='restaurantImg' style="width: 100%; height: 100%">
-        </div>
-        
-        <div id="reviewsContainer" class="col-12">
-
-        </div>
-
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="" alt="" id="restaurantImg" uk-cover>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <div class="uk-grid-divider uk-child-width-expand" uk-grid>
+                        <h3 class="uk-card-title" id="restaurantN"></h3>
+                        <span class="uk-text-large uk-width-small uk-width-expand"><span id='restaurantStar'></span> <a uk-icon="icon: star; ratio: 2" class="uk-text-warning "></a></span>
+                    </div>
+                    <div class="uk-grid-divider uk-child-width-expand uk-text-center" uk-grid>
+                        <span class="uk-text-normal"><span  id='restaurantMoney'></span> <a uk-icon="credit-card" class="uk-text-secondary"></a></span>
+                        <span class="uk-text-normal"><span id='restaurantBussy'></span> <a uk-icon="users" class="uk-text-success"></a></span>
+                        <span class="uk-text-normal" ><span id='restaurantClean'></span> <a uk-icon="warning" class="uk-text-primary"></a></span> 
+                    </div>
+                    <p id='restaurantDescription'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doicta sit cumque aliquam magni minima. lo</p>
+                </div>
+                <div class="uk-card-footer">
+                    <a href="#create-form" class="uk-button uk-button-text" uk-scroll>Write a review</a>
+                </div>
+            </div>
 </div>
 <ul id="reviewsContainer" class="uk-comment-list">
-
 </ul>
 <div class="uk-margin-xlarge-top">
             <h1 class="uk-heading-divider" style="color: antiquewhite;">New Review</h1>
             <form class="uk-form-stacked uk-card uk-card-body uk-card-secondary" id="create-form">
                 <fieldset class="uk-fieldset">
-                    
-                    <label class="uk-form-label uk-text-bold" for="form-stacked-text">Your name</label>
-                    
-                    <div class="uk-margin-bottom">
-                        <input class="uk-input" type="text" placeholder="ex: John Doe" name="username" id="userName">
-                    </div>
-                    
                     <label class="uk-form-label" for="form-stacked-text">Title of comment</label>
-                    
                     <div class="uk-margin-bottom">
                         <input class="uk-input" type="text" placeholder="ex: Excellent experience!" name="title" id="title">
                     </div>
-
-                    
                     <div class="uk-margin-bottom">
                         <label class="uk-form-label" for="form-stacked-textarea">Comment</label>
                         <textarea class="uk-textarea" rows="5" placeholder="ex: This place was wonderful!" name="comment" id="comment"></textarea>
                     </div>
-                    
-                    
-                    
-                    
                     <label class="uk-form-label uk-text-bold" for="form-stacked-text"><span uk-icon="icon: star"></span> General Rating <span class="uk-text-lighter uk-text-italic">(Food, atmosphere, service)</span></label>
                     <div class="uk-margin-bottom" uk-grid>
-                        
                         <input class="uk-range uk-width-5-6" type="range" value="5" min="1" max="5" step="1" id="generalSlider">
                         <div class="uk-width-expand uk-text-center">
                             <span class="uk-width-extend">
@@ -77,37 +72,31 @@
                         </div>
                     </div>
                     <button class="uk-button uk-button-primary uk-align-center" type="submit">Submit</button>
-                    
-                    
                 </fieldset>
             </form>
 </div>
-
-
-
-
+<br>
+<hr>
+<a href="#" class="uk-button uk-button-text uk-light uk-text-large uk-margin-left" uk-scroll>Back to top</a>
+<br>
+<br>
+<br>
+<br>
 <script src="/assets/js/reviews.js"></script>
-
 <script>
   // Client side JS
-
   const sliderG = document.getElementById("generalSlider");
   const outputG = document.getElementById("generalValue");
   outputG.innerHTML = sliderG.value; // Display the default slider value
-
   const sliderA = document.getElementById("affordSlider");
   const outputA = document.getElementById("affordValue");
   outputA.innerHTML = sliderA.value; // Display the default slider value
-
   const sliderB = document.getElementById("busynessSlider");
   const outputB = document.getElementById("busynessValue");
   outputB.innerHTML = sliderB.value; // Display the default slider value
-
   const sliderC = document.getElementById("cleanSlider");
   const outputC = document.getElementById("cleanValue");
   outputC.innerHTML = sliderC.value; // Display the default slider value
-
-
   // Update the current slider value (each time you drag the slider handle)
   sliderG.oninput = function() {
     outputG.innerHTML = sliderG.value;
