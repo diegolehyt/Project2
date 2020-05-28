@@ -1,14 +1,33 @@
-<div class="row">
- 
-        <h4 id="restaurantN" class="col-12"></h4>
-        <div class="img-thumbnail rounded float-right" style="height: 15%; width: 15%">
-          <img id='restaurantImg' style="width: 100%; height: 100%">
-        </div>
-        
-        <div id="reviewsContainer" class="col-12">
-
-        </div>
-
+<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+            <div class="uk-card-media-left uk-cover-container">
+                <img src="" alt="" id="restaurantImg" uk-cover>
+                <div class="uk-inline">
+                    
+                    <div class="uk-overlay-default uk-position-cover"></div>
+                    <div class="uk-overlay uk-position-bottom uk-dark">
+                        <p>Default Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <canvas width="600" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body">
+                    <div class="uk-grid-divider uk-child-width-expand" uk-grid>
+                        <h3 class="uk-card-title" id="restaurantN">Montanas</h3>
+                        <span class="uk-text-large uk-width-small uk-width-expand">2 <a uk-icon="icon: star; ratio: 2" class="uk-text-warning "></a></span>
+                    </div>
+                    <div class="uk-grid-divider uk-child-width-expand uk-text-center" uk-grid>
+                        <span class="uk-text-normal">5 <a uk-icon="credit-card" class="uk-text-secondary"></a></span>
+                        <span class="uk-text-normal">5 <a uk-icon="users" class="uk-text-success"></a></span>
+                        <span class="uk-text-normal">5 <a uk-icon="warning" class="uk-text-primary"></a></span> 
+                    </div>
+                    
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doicta sit cumque aliquam magni minima. lo</p>
+                </div>
+                <div class="uk-card-footer">
+                    <a href="#create-form" class="uk-button uk-button-text" uk-scroll>Write a review</a>
+                </div>
+            </div>
 </div>
 <ul id="reviewsContainer" class="uk-comment-list">
 
@@ -82,6 +101,13 @@
                 </fieldset>
             </form>
 </div>
+<br>
+<hr>
+<a href="#" class="uk-button uk-button-text uk-light uk-text-large uk-margin-left" uk-scroll>Back to top</a>
+<br>
+<br>
+<br>
+<br>
 
 
 
