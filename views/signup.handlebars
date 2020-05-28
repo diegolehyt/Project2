@@ -1,21 +1,53 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Revisa | SignUp</title>
-</head>
-<body>
-<form id="signup" name="signup" method="post" action="/signup">
-  <label for="email">Email Address</label>
-  <input class="text" name="email" type="email" />
-  <label for="firstname">Firstname</label>
-  <input name="firstname" type="text" />
-  <label for="lastname">Lastname</label>
-  <input name="lastname" type="text" />
-  <label for="password">Password</label>
-  <input name="password" type="password" />
-  <input class="btn" type="submit" value="Sign Up" />
-</form>
+<!-- SignUp -->
+        <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light uk-align-center uk-width-1-1 uk-width-2-3@s uk-width-1-2@m">
+            <h3 class="uk-heading-line uk-text-center uk-margin">Sign Up</h3>
+            <form class="uk-card-body" id="signup" name="signup" method="post" action="/signup">
+                <label class="uk-form-label" for="form-stacked-text">Firstname</label>
+                <div class="uk-margin-bottom">
+                    <div class="uk-inline uk-width-1-1">
+                        <input  name="firstname" class="uk-input" type="text">
+                    </div>
+                </div>
+                <label class="uk-form-label" for="form-stacked-text">Lastname</label>
+                <div class="uk-margin-bottom">
+                    <div class="uk-inline uk-width-1-1">
+                        <input name="lastname" class="uk-input" type="text">
+                    </div>
+                </div>
+                <label class="uk-form-label" for="form-stacked-text">Email Adress</label>
+                <div class="uk-margin-bottom">
+                    <div class="uk-inline uk-width-1-1">
+                        <a class="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: user"></a>
+                        <input name="email" class="uk-input" type="text">
+                    </div>
+                </div>
+                <label class="uk-form-label" for="form-stacked-password">Password</label>
+                <div class="uk-margin-bottom">
+                    <div class="uk-inline uk-width-1-1">
+                        <a class="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: lock"></a>
+                        <input name="password" class="uk-input" type="password" id="myInput">
+                    </div>
+                </div>
+                <div class="uk-grid-small uk-child-width-auto uk-grid">
+                    <label><input class="uk-checkbox" type="checkbox" onclick="togglePasswordVis()" unchecked> Show Password</label>
+                </div>
+                <input class="btn uk-button uk-button-primary uk-align-center" type="submit" value="Sign Up"/>
+            </form>
+            <hr>
+            <footer class="uk-card-footer uk-align-right">
+                <span class="uk-text-lighter">Allready have an account? </span><a href="/ signin" class="uk-button uk-button-text uk-margin-left">Login Here</a>
+            </footer>
+        </div>
 
-</body>
-</html>
+        <script>
+                  // Show password script (signup page)
+  function togglePasswordVis() {
+    const x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+        </script>

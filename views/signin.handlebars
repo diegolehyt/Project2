@@ -1,16 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Revisa | Signin</title>
-</head>
-<body>
-<form id="signin" name="signin" method="post" action="signin">
-  <label for="email">Email Address</label>
-  <input class="text" name="email" type="text" />
-  <label for="password">Password</label>
-  <input name="password" type="password" />
-  <input class="btn" type="submit" value="Sign In" />
-</form>
 
-</body>
-</html>
+
+<!-- SignIn -->
+        <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light uk-align-center uk-width-1-1 uk-width-2-3@s uk-width-1-2@m">
+            <h3 class="uk-heading-line uk-text-center">Login</h3>
+            <form class="uk-card-body" id="signin" name="signin" method="post" action="signin" >
+                <label class="uk-form-label" for="form-stacked-text">Email Adress</label>
+                <div class="uk-margin-bottom">
+                    <div class="uk-inline uk-width-1-1">
+                        <a class="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: user"></a>
+                        <input name="email" class="uk-input" type="text">
+                    </div>
+                </div>
+                <label class="uk-form-label" for="form-stacked-password">Password</label>
+                <div class="uk-margin-bottom">
+                    <div class="uk-inline uk-width-1-1">
+                        <a class="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: lock"></a>
+                        <input name="password" class="uk-input" type="password">
+                    </div>
+                </div>
+                 <input class="btn uk-button uk-button-primary uk-align-center" type="submit" value="Sign In" />
+                 
+            </form>
+            <hr>
+            <footer class="uk-card-footer uk-align-right">
+                <span class="uk-text-lighter">New to Revisa? </span><a href="/signup" class="uk-button uk-button-text uk-margin-left">SignUp Here</a>
+            </footer>
+        </div>

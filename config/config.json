@@ -2,8 +2,8 @@
   "development": {
 
     "username": "root",
-    "password": "kephane862",
-    "database": "revisa_db",
+    "password": "password",
+    "database": "sequelize_passport",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

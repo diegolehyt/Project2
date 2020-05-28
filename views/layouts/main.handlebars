@@ -1,55 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> --}}
-	<link rel="stylesheet" href="/assets/css/styles.css" type="text/css" />
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/css/uikit.min.css" />
-	<script src="https://kit.fontawesome.com/c502137733.js"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css" type="text/css" />
+    
+    <script src="https://kit.fontawesome.com/c502137733.js"></script>
     <title>Revisa</title>
 </head>
 
 <body class='bg'>
-    <header>
-        <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click" uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom">
-            <div class="uk-grid" uk-grid>
-                <div class="uk-navbar-item uk-navbar-center ">
-                    <h1 class="uk-text-bold ">Revisa</h1>
-                </div>
-                <div class="uk-navbar-left">
-            
-                    <ul class="uk-navbar-nav">
-                        <li class="uk-active"><a href="/restaurants">Restaurants</a></li>
-                        <li><a href="/restaurants/new">Add New Restaurant</a></li>
-                        <li>
-                            <a href="#">Account</a>
-                            <div class="uk-navbar-dropdown">
-                                <ul class="uk-nav uk-navbar-dropdown-nav">
-                                    <li class="uk-active"><a href="#">Dashboard</a></li>
-                                    <li><a href="#">Sign In</a></li>
-                                    <li><a href="#">Sign up</a></li>
-                                    <li><a href="#">Sign out</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-            
-                </div>
-            </div>
-        </nav>
-    </header>
-    <main class="uk-container">
-        
-	{{{ body }}}
+
+          <nav class=" uk-navbar-transparent .uk-dark uk-navbar-container uk-margin" uk-navbar>
+    <div class="uk-navbar-center">
+
+        <div class="uk-navbar-center-left"><div>
+            <ul class="uk-navbar-nav">  
+                <li>
+                    <a href="/index">Menu</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                               <li><a href="restaurants/reviews">Reviews</a></li>
+                                    <li><a href="/restaurants/new">Add Review</a></li>
+                                    <li><a href="/restaurants">Restuarants</a></li>
+                                    <li><a href="/dashboard">Account</a>
+                                    <li><a href="/signup">Sign Up</a></li>
+                                </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div></div>
+        <a class="uk-navbar-item uk-logo" href="#"><img
+                    src="https://cdn.shopify.com/s/files/1/1901/4421/files/logo_transparent.png?v=1590629007" alt="logo"
+                    width="200" height="200" class="uk-margin-small-right"></a>
+        <div class="uk-navbar-center-right"><div>
+            <ul class="uk-navbar-nav">
+                <li><a href="/signin">Sign In</a></li>
+            </ul>
+        </div></div>
+
+    </div>
+</nav>
+
+    <main class="uk-container ">
+
+        {{{ body }}}
 
     </main>
-	<script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit.min.js"></script>
+
+    <footer>
+
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit-icons.min.js"></script>
 </body>
 <!-- UIkit JS -->
-    
-</html>
 
+</html>
