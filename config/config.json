@@ -1,10 +1,10 @@
 {
   "development": {
 
-    "username": "root",
-    "password": "sum182magodeoz",
-    "database": "revisa_db",
-    "host": "127.0.0.1",
+    "username": "q486gso82gfod8vk",
+    "password": "p18xzmuwob05ouvs",
+    "database": "c7dwyub2h8gzhj29",
+    "host": "umabrisfx8afs3ja.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
