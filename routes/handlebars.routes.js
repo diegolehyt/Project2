@@ -43,21 +43,9 @@ router.get('/restaurants/new', function (req, res) {
   res.render('new')
 })
 // The index route redirects to /landing route
-// router.get('/', (req, res) => res.redirect('/register'))
+router.get('/', (req, res) => res.redirect('/signup'))
+
 // reviews page
-// The route for managing restaurants
-// router.get('/restaurants/reviews/:id', async function (req, res) {
-//   try {
-//     const restaurant = await Restaurant.findOne({
-//       raw: true,
-//       id: req.params.id
-//     })
-//     console.log(restaurant)
-//     res.status(200).render('reviews', { restaurants: restaurant })
-//   } catch (err) {
-//     res.status(500).json({ errors: [err] }) // change to better error display
-//   }
-// })
 router.get('/restaurants/reviews', async function (req, res) {
   try {
     const restaurant = await Restaurant.findAll({ raw: true, include: [Review] })
