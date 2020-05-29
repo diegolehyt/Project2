@@ -18,10 +18,6 @@ const { Review, Restaurant } = require('../models')
 
 // GET route for getting all of the reviews
 router.get('/', function (req, res) {
-  // const filterCriteria = {}
-  // if (req.query.restaurant_id) {
-  //   req.query.RestaurantId = req.query.restaurant_id //====== change this to body
-  // }
   Review.findAll({ include: [Restaurant] })
     .then(reviewsArray => res.status(200).json({ data: reviewsArray }))
     .catch(err => {

@@ -19,19 +19,19 @@ module.exports = function (sequelize, DataTypes) {
       validate: { len: [1] }
     },
     rating: {
-      type: DataTypes.STRING,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
     money: {
-      type: DataTypes.STRING,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
     bussy: {
-      type: DataTypes.STRING,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
     clean: {
-      type: DataTypes.STRING,
+      type: DataTypes.FLOAT,
       allowNull: true
     }
   })
@@ -40,9 +40,6 @@ module.exports = function (sequelize, DataTypes) {
     Review.belongsTo(models.Restaurant, {
       foreignKey: { allowNull: false }
     })
-    // Review.belongsTo(models.User, {
-    //   foreignKey: { allowNull: false }
-    // })
   }
 
   return Review

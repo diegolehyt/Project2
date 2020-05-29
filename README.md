@@ -40,7 +40,7 @@
 
 ## 📋Description
 
-Restaurant quality checker, with some review threads.
+A restaurant quality checker, with some review threads.
 Especially during a post-pandemic time like today, Fear has taken the masses by storm. Uncertainty is rampant. So, to reassure the public and to give them more information, we are building a review app that contains recent relevant information and reviews on a restaurant, affordability, atmosphere/location, and if it is clean (COVID-19 PRECAUTION FRIENDLY), and also, if the food is succulent.
 
 ## User Case
@@ -54,7 +54,7 @@ Cleanliness
 Affordability
 Atmosphere
 Food Quality
-Restaurant quality checker, with some review threads.
+
 ```
 
 - Open the application using "command line", (recomended: GitBash).
@@ -82,7 +82,7 @@ This project is under the MIT License.
 
 ## 📑Details
 ```
-This repository content the files: 
+This repository contains these files: 
  Project 2 
       > Config 
         >Passport

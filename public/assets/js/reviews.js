@@ -4,21 +4,28 @@
 // eslint-disable-next-line no-undef
 const restaurantId = localStorage.getItem('vOneLocalStorage')
 const apiRestURL = `/api/restaurants/${restaurantId}`
+
+// Getting data from restaurant API
 // eslint-disable-next-line no-undef
 fetch(apiRestURL).then(function (response) { return response.json() }).then(function (data) {
   const restaurantN = document.getElementById('restaurantN')
   const reviewsContainer = document.getElementById('reviewsContainer')
   restaurantN.innerHTML = (data.data.name)
   document.getElementById('restaurantImg').setAttribute('src', `${data.data.image}`)
-  console.log(data.data.Reviews)
+  // console.log(data.data.Reviews)
+
   const allReviews = data.data.Reviews
+
+  // Comment Block generator
   allReviews.forEach(review => {
     const reviewBlock = document.createElement('li')
     reviewBlock.className = 'uk-transition-toggle'
     reviewBlock.setAttribute('tabindex', '0')
+
     const reviewSubBlock = document.createElement('article')
     reviewSubBlock.className = 'uk-comment uk-comment-primary uk-width-3-4@l uk-margin-bottom uk-transition-scale-up uk-transition-opaque'
     reviewBlock.appendChild(reviewSubBlock)
+
     // scope 2
     const reviewHeader = document.createElement('header')
     reviewHeader.className = 'uk-comment-header uk-grid-medium uk-flex-middle'
@@ -26,6 +33,7 @@ fetch(apiRestURL).then(function (response) { return response.json() }).then(func
     reviewCommentBody.className = 'uk-comment-body'
     reviewSubBlock.appendChild(reviewHeader)
     reviewSubBlock.appendChild(reviewCommentBody)
+
     // scope 3 A
     const dataDiv = document.createElement('div')
     dataDiv.className = 'uk-width-expand'
@@ -37,75 +45,75 @@ fetch(apiRestURL).then(function (response) { return response.json() }).then(func
     const ulBlock = document.createElement('ul')
     ulBlock.className = 'uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top'
     dataDiv.appendChild(ulBlock)
+
     // scope 4 A
     const timeStamp = document.createElement('li')
     timeStamp.innerHTML = (review.createdAt).substr(0, 10) // substring later
     ulBlock.appendChild(timeStamp)
+
     const startBlock = document.createElement('li')
     startBlock.className = 'uk-text-large uk-margin-small@s uk-width-small@s'
     startBlock.innerHTML = `${review.rating} <a uk-icon="icon: star; ratio: 2" class="uk-text-warning"></a>`
     ulBlock.appendChild(startBlock)
+
     const moneyBlock = document.createElement('li')
     moneyBlock.className = 'uk-text-normal'
     moneyBlock.innerHTML = `${review.money} <a uk-icon="credit-card" class="uk-text-secondary"></a>`
     ulBlock.appendChild(moneyBlock)
+
     const bussyBlock = document.createElement('li')
     bussyBlock.className = 'uk-text-normal'
     bussyBlock.innerHTML = `${review.bussy} <a uk-icon="users" class="uk-text-success"></a>`
     ulBlock.appendChild(bussyBlock)
+
     const cleanBlock = document.createElement('li')
     cleanBlock.className = 'uk-text-normal'
     cleanBlock.innerHTML = `${review.clean} <a uk-icon="warning" class="uk-text-primary"></a>`
     ulBlock.appendChild(cleanBlock)
+
     // scope 3 B
     const titleBlock = document.createElement('h2')
     titleBlock.innerHTML = review.title
     reviewCommentBody.appendChild(titleBlock)
+
     const commentBlock = document.createElement('p')
     commentBlock.innerHTML = review.comment
     reviewCommentBody.appendChild(commentBlock)
+
     // connect DOM
     reviewsContainer.appendChild(reviewBlock)
   })
+
   // RATING
   let sumRating = 0
   let sumRatingMoney = 0
   let sumRatingBussy = 0
   let sumRatingClean = 0
+
+  // Calculating all average criterias
   allReviews.forEach(review => {
-    const oneRating = parseInt(review.rating)
-    const oneRatingMoney = parseInt(review.money)
-    const oneRatingBussy = parseInt(review.bussy)
-    const oneRatingClean = parseInt(review.clean)
+    const oneRating = review.rating
+    const oneRatingMoney = review.money
+    const oneRatingBussy = review.bussy
+    const oneRatingClean = review.clean
+
     sumRating = sumRating + oneRating
     sumRatingMoney = sumRatingMoney + oneRatingMoney
     sumRatingBussy = sumRatingBussy + oneRatingBussy
     sumRatingClean = sumRatingClean + oneRatingClean
   })
-  console.log(sumRating)
-  console.log(allReviews.length)
+
   const averageRating = (sumRating / allReviews.length).toFixed(1)
   const averageMoney = (sumRatingMoney / allReviews.length).toFixed(1)
   const averageBussy = (sumRatingBussy / allReviews.length).toFixed(1)
   const averageClean = (sumRatingClean / allReviews.length).toFixed(1)
+
+  // used LocalStorage to pass data between to js files
   localStorage.setItem('averageRating', averageRating)
   localStorage.setItem('averageMoney', averageMoney)
   localStorage.setItem('averageBussy', averageBussy)
   localStorage.setItem('averageClean', averageClean)
-  // main()
-  // async function main () {
-  //   try {
-  //     await updateRating()
-  //     await average()
-  //     await load()
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-  // async function load () {
-  //   location.reload()
-  //   break
-  // }
+
   average()
   updateRating()
 
@@ -122,7 +130,7 @@ fetch(apiRestURL).then(function (response) { return response.json() }).then(func
     restaurantDescription.innerHTML = await (data.data.description)
   }
 })
-// localStorage.clear()
+
 // POST reviews
 document.getElementById('create-form').addEventListener('submit', event => {
   event.preventDefault()
@@ -144,9 +152,11 @@ document.getElementById('create-form').addEventListener('submit', event => {
     console.log(response)
     if (response.ok) location.reload()
     if (response) location.reload()
-    // location.replace('/restaurants/reviews')
   })
 })
+
+// PATCH
+// Sends the data to the serve, rin order to update a restaurant with the new ratings created
 async function updateRating () {
   const newRating = {
     averageRating: localStorage.getItem('averageRating'),
@@ -160,8 +170,6 @@ async function updateRating () {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newRating)
   }).then(response => {
-    // eslint-disable-next-line no-undef
-    // if (response.ok) location.replace('/restaurants/reviews')
     console.log(response)
   })
 }

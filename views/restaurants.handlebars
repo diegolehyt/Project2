@@ -1,41 +1,42 @@
 <div class="uk-child-width-1-2@m uk-child-width-1-3@l uk-margin-medium-bottom" uk-grid>
 {{#each restaurants}}
-                <div>
-                    <div class="uk-card uk-card-default uk-card-hover">
-                        <div class="uk-card-media-top uk-inline uk-transition-toggle" tabindex="0">
-                            <img data-src={{ image }} alt="nice grass" width="580" height="435" class="uk-align-center" uk-img>
-                            <div class="uk-overlay uk-overlay-default uk-position-bottom uk-transition-slide-bottom">
-                                <p>{{ name }} - {{ location }}</p>
-                            </div>
-                        </div>
-                        <div class="uk-card-body">
-                            <div class="uk-grid-divider uk-child-width-expand" uk-grid>
-                                <h3 class="uk-width-expand">{{ name }}</h3>
-                                <span class="uk-text-large uk-width-small uk-width-1-2@l uk-width-2-5@s">{{ averageRating }} <a uk-icon="icon: star; ratio: 2" class="uk-text-warning "></a></span>
-                            </div>
-                            <p>{{ description }}</p>
-                            <p><a uk-icon="credit-card" class="uk-text-secondary"></a> Pricing: {{ averageMoney }}</p>
-                            <p><a uk-icon="users" class="uk-text-success"></a> Busyness: {{ averageBussy }}</p>
-                            <p><a uk-icon="warning" class="uk-text-primary"></a> Cleanliness: {{ averageClean }}</p>
-                            <ul uk-accordion="toggle:">
-                                <li class="uk-margin-remove-top" >
-                                    <a class="uk-accordion-title uk-text-muted" href="#">More Info</a>
-                                    <div class="uk-accordion-content">
-                                        <p><a uk-icon="receiver" class="uk-text-secondary"></a> Phone #: {{ phone }}</p>
-                                        <p><a uk-icon="mail" class="uk-text-secondary"></a> Store email: {{ email }}</p>
-                                        <p><a uk-icon="comments" class="uk-text-secondary"></a> Languages: {{ language }}</p>
-                                        <p><a uk-icon="world" class="uk-text-secondary"></a> Website: {{ website }}</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="uk-card-footer">
-                            <a id={{ id }} href="/restaurants/reviews/{{ id }}" data-id={{ id }} onclick="{{ name }}()" class="uk-button uk-button-text">See Reviews</a>
-                        </div>
-                    </div>
-                </div>
+  <div>
+      <div class="uk-card uk-card-default uk-card-hover">
+          <div class="uk-card-media-top uk-inline uk-transition-toggle" tabindex="0">
+              <img data-src={{ image }} alt="nice grass" width="580" height="435" class="uk-align-center" uk-img>
+              <div class="uk-overlay uk-overlay-default uk-position-bottom uk-transition-slide-bottom">
+                  <p>{{ name }} - {{ location }}</p>
+              </div>
+          </div>
+          <div class="uk-card-body">
+              <div class="uk-grid-divider uk-child-width-expand" uk-grid>
+                  <h3 class="uk-width-expand">{{ name }}</h3>
+                  <span class="uk-text-large uk-width-small uk-width-1-2@l uk-width-2-5@s">{{ averageRating }} <a uk-icon="icon: star; ratio: 2" class="uk-text-warning "></a></span>
+              </div>
+              <p>{{ description }}</p>
+              <p><a uk-icon="credit-card" class="uk-text-secondary"></a> Pricing: {{ averageMoney }}</p>
+              <p><a uk-icon="users" class="uk-text-success"></a> Busyness: {{ averageBussy }}</p>
+              <p><a uk-icon="warning" class="uk-text-primary"></a> Cleanliness: {{ averageClean }}</p>
+              <ul uk-accordion="toggle:">
+                  <li class="uk-margin-remove-top" >
+                      <a class="uk-accordion-title uk-text-muted" href="#">More Info</a>
+                      <div class="uk-accordion-content">
+                          <p><a uk-icon="receiver" class="uk-text-secondary"></a> Phone #: {{ phone }}</p>
+                          <p><a uk-icon="mail" class="uk-text-secondary"></a> Store email: {{ email }}</p>
+                          <p><a uk-icon="comments" class="uk-text-secondary"></a> Languages: {{ language }}</p>
+                          <p><a uk-icon="world" class="uk-text-secondary"></a> Website: {{ website }}</p>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+          <div class="uk-card-footer">
+              <a id={{ id }} href="/restaurants/reviews/{{ id }}" data-id={{ id }} onclick="{{ myFunction }}()" class="uk-button uk-button-text">See Reviews</a>
+          </div>
+      </div>
+  </div>
 <script>
-  function {{ name }}() {
+  // Passing the ID to the reviews.js using LocalStorage
+  function {{ myFunction }}() {
     let restID = document.getElementById({{ id }}).getAttribute('data-id')
     // localstorage
     localStorage.setItem("vOneLocalStorage", restID);
@@ -50,41 +51,4 @@
 <br>
 <br>
 </div>
-{{!-- <script>
-// Update review slider values, dynamically on user input
-  const sliderG = document.getElementById("generalSlider");
-  const outputG = document.getElementById("generalValue");
-  outputG.innerHTML = sliderG.value; // Display the default slider value
-  const sliderA = document.getElementById("affordSlider");
-  const outputA = document.getElementById("affordValue");
-  outputA.innerHTML = sliderA.value; // Display the default slider value
-  const sliderB = document.getElementById("busynessSlider");
-  const outputB = document.getElementById("busynessValue");
-  outputB.innerHTML = sliderB.value; // Display the default slider value
-  const sliderC = document.getElementById("cleanSlider");
-  const outputC = document.getElementById("cleanValue");
-  outputC.innerHTML = sliderC.value; // Display the default slider value
-  // Update the current slider value (each time you drag the slider handle)
-  sliderG.oninput = function() {
-    outputG.innerHTML = sliderG.value;
-  }
-  sliderA.oninput = function() {
-    outputA.innerHTML = this.value;
-  }
-  sliderB.oninput = function() {
-    outputB.innerHTML = this.value;
-  }
-  sliderC.oninput = function() {
-    outputC.innerHTML = this.value;
-  }
-  // Show password script (signup page)
-  function togglePasswordVis() {
-    const x = document.getElementById("myInput");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  }
-</script> --}}
 <script src="/assets/js/client.js"></script>
