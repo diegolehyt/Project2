@@ -22,7 +22,6 @@ router.get('/restaurants', async function (req, res) {
     const restaurants = await Restaurant.findAll({
       raw: true
     })
-    // console.log(req.user)
     res.status(200).render('restaurants', { restaurants: restaurants })
   } catch (err) {
     res.status(500).json({ errors: [err] }) // change to better error display
@@ -30,9 +29,13 @@ router.get('/restaurants', async function (req, res) {
 })
 router.post('/restaurants', async function (req, res) {
   try {
+    const nameTrim = req.body.name.replace(' ', '')
+    // eslint-disable-next-line quotes
+    const nameTrim2 = nameTrim.replace("'", '')
+    const myFunction = nameTrim2
     const { name, image, location, phone, email, language, website, description } = req.body
     // save it into the db
-    await Restaurant.create({ name, image, location, phone, email, language, website, description })
+    await Restaurant.create({ name, image, location, phone, email, language, website, description, myFunction })
     res.status(200).redirect('/restaurants')
   } catch (err) {
     res.status(500).json({ errors: [err] }) // change to better error display
@@ -49,9 +52,6 @@ router.get('/', (req, res) => res.redirect('/signup'))
 router.get('/restaurants/reviews', async function (req, res) {
   try {
     const restaurant = await Restaurant.findAll({ raw: true, include: [Review] })
-    // const restaurant = await Restaurant.findAll({ include: [Review] })
-    // console.log('REVIEWS', req.user.firstname)
-    // console.log('one restaurant: \n' + restaurant)
     res.status(200).render('reviews', { restaurant: restaurant })
   } catch (err) {
     res.status(500).json({ errors: [err] }) // change to better error display

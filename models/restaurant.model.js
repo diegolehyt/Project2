@@ -31,6 +31,11 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       validate: { len: [1] }
     },
+    myFunction: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { len: [1] }
+    },
     image: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -41,19 +46,19 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true
     },
     averageRating: {
-      type: DataTypes.STRING,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
     averageMoney: {
-      type: DataTypes.STRING,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
     averageBussy: {
-      type: DataTypes.STRING,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
     averageClean: {
-      type: DataTypes.STRING,
+      type: DataTypes.FLOAT,
       allowNull: true
     }
   })

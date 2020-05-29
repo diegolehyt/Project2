@@ -12,15 +12,6 @@ const router = require('express').Router()
 
 // Routes
 // =============================================================
-// {
-//   include: [{
-//     model: Review,
-//     include: { model: User }
-//   }]
-// }
-//
-
-// Restaurant.findAll({ include: [{ model: Review, include: [User] }] })
 
 // Find all Restaurants and return them to the user with res.json
 router.get('/', function (req, res) {
