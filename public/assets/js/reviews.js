@@ -8,7 +8,6 @@ const apiRestURL = `/api/restaurants/${restaurantId}`
 // Getting data from restaurant API
 // eslint-disable-next-line no-undef
 fetch(apiRestURL).then(function (response) { return response.json() }).then(function (data) {
-
   const restaurantN = document.getElementById('restaurantN')
   const reviewsContainer = document.getElementById('reviewsContainer')
   restaurantN.innerHTML = (data.data.name)
