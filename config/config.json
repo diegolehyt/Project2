@@ -1,24 +1,22 @@
 {
   "development": {
-
-    "username": "q486gso82gfod8vk",
-    "password": "p18xzmuwob05ouvs",
-    "database": "c7dwyub2h8gzhj29",
-    "host": "umabrisfx8afs3ja.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "username": "root",
+    "password": "sum182magodeoz",
+    "database": "revisa_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
   },
   "test": {
-    "username": "",
+    "username": "root",
     "password": null,
-    "database": "",
-    "host": "",
-    "dialect": "mysql"
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
   },
   "production": {
-    "username": "",
-    "password": null,
-    "database": "",
-    "host": "127.0.0.1",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
